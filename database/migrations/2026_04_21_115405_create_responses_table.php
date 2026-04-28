@@ -8,15 +8,14 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * Creates the responses table to store individual question answers per assessment.
      */
     public function up(): void
     {
         Schema::create('responses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('assessment_id')->constrained()->onDelete('cascade');
-            $table->unsignedTinyInteger('question_number'); // 1–9
-            $table->unsignedTinyInteger('selected_score');  // 0–3
+            $table->foreignId('result_id')->constrained()->onDelete('cascade');
+            $table->foreignId('question_id')->constrained()->onDelete('cascade');
+            $table->integer('answer');
             $table->timestamps();
         });
     }
