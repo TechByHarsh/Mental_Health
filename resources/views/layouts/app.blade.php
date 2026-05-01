@@ -168,33 +168,18 @@
         <spline-viewer url="https://prod.spline.design/6Wq1Q7nESSpYQ6pX/scene.splinecode" style="width:100%;height:100%;"></spline-viewer>
     </div>
 
-    @auth
-    <!-- Navigation bar (only for authenticated users) -->
+    <!-- Navigation bar -->
     <nav class="navbar">
-        <a href="{{ route('dashboard') }}" class="navbar-brand">
+        <a href="{{ url('/') }}" class="navbar-brand">
             🧠 <span>MindSpace</span>
         </a>
         <div class="navbar-links">
-            <a href="{{ route('dashboard') }}"
-               class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                Dashboard
-            </a>
-            <a href="{{ route('assessment.index') }}"
-               class="nav-link {{ request()->routeIs('assessment.index') ? 'active' : '' }}">
+            <a href="{{ url('/assessment/phq9') }}"
+               class="nav-link">
                 Take Assessment
             </a>
-            <a href="{{ route('assessment.history') }}"
-               class="nav-link {{ request()->routeIs('assessment.history') ? 'active' : '' }}">
-                History
-            </a>
-            <span class="navbar-user">{{ Auth::user()->name }}</span>
-            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                @csrf
-                <button type="submit" class="nav-logout">Logout</button>
-            </form>
         </div>
     </nav>
-    @endauth
 
     <div class="main-content">
         @yield('content')

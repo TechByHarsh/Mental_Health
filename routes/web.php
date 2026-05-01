@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/assessment/phq9",[AssessmentController::class, 'show']);
 Route::post("/assessment/phq9/submit",[AssessmentController::class , 'submit']);
+Route::get("/assessment/history",[AssessmentController::class, 'history']);
 
 
 
