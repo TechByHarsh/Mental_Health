@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Depression Assessment (PHQ-9) — A confidential clinical screening tool to help you understand emotional patterns.">
-    <title>Depression Assessment (PHQ-9) — Therawell</title>
+    <meta name="description" content="Sleep Quality Assessment — A peaceful, confidential clinical screening tool to help you measure and support your sleep patterns.">
+    <title>Sleep Quality Assessment — Therawell</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,7 +54,7 @@
             </div>
 
             <!-- Heading -->
-            <h1 class="gad-heading">Depression Assessment</h1>
+            <h1 class="gad-heading">Sleep Quality Assessment</h1>
 
             <!-- Decorative Divider -->
             <div class="gad-divider">
@@ -64,7 +64,7 @@
             </div>
 
             <!-- Subtitle -->
-            <p class="gad-subtitle">Over the last 2 weeks, how often have you been bothered by these problems?</p>
+            <p class="gad-subtitle">A peaceful, gentle space to understand, reflect on, and support your sleep health.</p>
         </div>
 
         <!-- ── Permanent Fixed Outer Card ── -->
@@ -83,8 +83,8 @@
                             </svg>
                         </div>
                         <div class="gad-info-text">
-                            <div class="gad-info-title">Clinical Screening (PHQ-9)</div>
-                            <div class="gad-info-desc">The Patient Health Questionnaire (PHQ-9) is an internationally trusted diagnostic tool used to screen for depression levels. It is confidential, supportive, and private.</div>
+                            <div class="gad-info-title">Sleep Pattern Screening</div>
+                            <div class="gad-info-desc">This screening helps track indicators of sleep hygiene, sleep disruption, restfulness, and fatigue. It is completely supportive and confidential.</div>
                         </div>
                     </div>
 
@@ -100,8 +100,8 @@
                             </svg>
                         </div>
                         <div class="gad-info-text">
-                            <div class="gad-info-title">Completely Private & Secure</div>
-                            <div class="gad-info-desc">All responses are securely encrypted and confidential. Your screening results are never shared with third parties.</div>
+                            <div class="gad-info-title">Secure & Confidential</div>
+                            <div class="gad-info-desc">Your results are protected using modern web encryption and are visible only to you. We hold your personal details in highest trust.</div>
                         </div>
                     </div>
 
@@ -115,8 +115,8 @@
                             </svg>
                         </div>
                         <div class="gad-info-text">
-                            <div class="gad-info-title">Need Immediate Care?</div>
-                            <div class="gad-info-desc">If you are in immediate distress or having thoughts of self-harm, please dial 988 (Crisis Lifeline) or your local emergency response line.</div>
+                            <div class="gad-info-title">Need Help Offline?</div>
+                            <div class="gad-info-desc">If chronic insomnia, distress, or exhausting fatigue are affecting your daily physical and mental safety, please reach out to your local clinical healthcare team.</div>
                         </div>
                     </div>
 
@@ -138,7 +138,7 @@
                 <div class="gad-card-pane inactive" id="pane-assessment">
                     <!-- Top Area -->
                     <div class="gad-pane-header">
-                        <span class="gad-step-label" id="gadStepLabel">STEP 1 OF 9</span>
+                        <span class="gad-step-label" id="gadStepLabel">STEP 1 OF 10</span>
                         <button class="gad-back-btn" id="gadBackBtn" style="visibility: hidden" onclick="prevQuestionFlow()">
                             <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Previous
                         </button>
@@ -188,19 +188,19 @@
                         <div class="gad-complete-summary">
                             <div class="gad-summary-item">
                                 <span>Questions Answered</span>
-                                <strong id="gadSummaryCount">9 of 9</strong>
+                                <strong id="gadSummaryCount">10 of 10</strong>
                             </div>
                             <div class="gad-summary-item">
                                 <span>Assessment</span>
-                                <strong>PHQ-9 Depression Screening</strong>
+                                <strong>Sleep Quality Screening</strong>
                             </div>
                             <p class="gad-complete-note">
-                                Your answers will be safely evaluated. This screening helps assess clinical depression levels but does not substitute for expert advice.
+                                Your answers will be analyzed to assess your recent sleep quality index. May you find restful nights and peaceful mornings ahead.
                             </p>
                         </div>
 
                         <!-- Form submission -->
-                        <form id="gadSubmitForm" action="/assessment/phq9/submit" method="POST" style="width:100%;">
+                        <form id="gadSubmitForm" action="/assessment/sleep/submit" method="POST" style="width:100%;">
                             @csrf
                             <div id="gadHiddenInputs"></div>
                             <button type="submit" class="gad-submit-results-btn">
@@ -252,18 +252,18 @@
     makeParticles('gadParticles',28);
 })();
 
-// PHQ-9 seeder questions mapping
-var PHQ_QUESTIONS = [
+// Sleep questions mapping
+var SLEEP_QUESTIONS = [
     @foreach($questions as $q)
     { id: {{ $q->id }}, text: @json($q->question_text) },
     @endforeach
 ];
 
-var PHQ_OPTIONS = [
-    { value: 0, label: 'Not at all' },
-    { value: 1, label: 'Several days' },
-    { value: 2, label: 'More than half the days' },
-    { value: 3, label: 'Nearly every day' }
+var SLEEP_OPTIONS = [
+    { value: 0, label: 'Never' },
+    { value: 1, label: 'Almost Never' },
+    { value: 2, label: 'Sometimes' },
+    { value: 3, label: 'Fairly Often' }
 ];
 
 var currentIdx = 0;
@@ -325,8 +325,8 @@ function startAssessmentFlow(){
  */
 function renderQuestionInSlide(slideId, idx) {
     var slide = document.getElementById(slideId);
-    var q = PHQ_QUESTIONS[idx];
-    var total = PHQ_QUESTIONS.length;
+    var q = SLEEP_QUESTIONS[idx];
+    var total = SLEEP_QUESTIONS.length;
     
     // Update labels and progress bar
     document.getElementById('gadStepLabel').textContent = 'STEP ' + (idx + 1) + ' OF ' + total;
@@ -350,7 +350,7 @@ function renderQuestionInSlide(slideId, idx) {
     var optionsContainer = slide.querySelector('.gad-options');
     optionsContainer.innerHTML = '';
     
-    PHQ_OPTIONS.forEach(function(opt) {
+    SLEEP_OPTIONS.forEach(function(opt) {
         var card = document.createElement('div');
         card.className = 'gad-option' + (answers[q.id] === opt.value ? ' selected' : '');
         card.setAttribute('data-value', opt.value);
@@ -384,7 +384,7 @@ function selectAnswerFlow(qId, val){
     
     setTimeout(function(){
         isTransitioning = false; // release lock for slide function
-        if(currentIdx < PHQ_QUESTIONS.length - 1){
+        if(currentIdx < SLEEP_QUESTIONS.length - 1){
             currentIdx++;
             transitionQuestion(currentIdx, 'next');
         } else {
@@ -515,7 +515,7 @@ function showCompleteFlow(){
     paneComplete.classList.add('enter-active-right', 'active');
     
     // Populate form payload
-    var total = PHQ_QUESTIONS.length;
+    var total = SLEEP_QUESTIONS.length;
     document.getElementById('gadSummaryCount').textContent = total + ' of ' + total;
     var hid = document.getElementById('gadHiddenInputs');
     hid.innerHTML = '';

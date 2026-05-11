@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Depression Assessment (PHQ-9) — A confidential clinical screening tool to help you understand emotional patterns.">
-    <title>Depression Assessment (PHQ-9) — Therawell</title>
+    <meta name="description" content="Depression Assessment — A step toward understanding your emotional well-being. Private, secure, and compassionate.">
+    <title>Depression Assessment — Therawell</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Link to unified design system stylesheet -->
+    <!-- Link to updated design system stylesheet -->
     <link rel="stylesheet" href="/css/gad7-assessment.css">
 </head>
 <body>
@@ -64,7 +64,7 @@
             </div>
 
             <!-- Subtitle -->
-            <p class="gad-subtitle">Over the last 2 weeks, how often have you been bothered by these problems?</p>
+            <p class="gad-subtitle">A step toward understanding. A step toward healing.</p>
         </div>
 
         <!-- ── Permanent Fixed Outer Card ── -->
@@ -83,8 +83,8 @@
                             </svg>
                         </div>
                         <div class="gad-info-text">
-                            <div class="gad-info-title">Clinical Screening (PHQ-9)</div>
-                            <div class="gad-info-desc">The Patient Health Questionnaire (PHQ-9) is an internationally trusted diagnostic tool used to screen for depression levels. It is confidential, supportive, and private.</div>
+                            <div class="gad-info-title">Important Information</div>
+                            <div class="gad-info-desc">This assessment is designed to help you understand your emotional well-being. It is not a medical diagnosis and should not replace professional care.</div>
                         </div>
                     </div>
 
@@ -100,8 +100,8 @@
                             </svg>
                         </div>
                         <div class="gad-info-text">
-                            <div class="gad-info-title">Completely Private & Secure</div>
-                            <div class="gad-info-desc">All responses are securely encrypted and confidential. Your screening results are never shared with third parties.</div>
+                            <div class="gad-info-title">Your Privacy Matters</div>
+                            <div class="gad-info-desc">Your responses are confidential and will only be used to provide insights and support. We never share your data with anyone.</div>
                         </div>
                     </div>
 
@@ -115,8 +115,8 @@
                             </svg>
                         </div>
                         <div class="gad-info-text">
-                            <div class="gad-info-title">Need Immediate Care?</div>
-                            <div class="gad-info-desc">If you are in immediate distress or having thoughts of self-harm, please dial 988 (Crisis Lifeline) or your local emergency response line.</div>
+                            <div class="gad-info-title">Need Immediate Support?</div>
+                            <div class="gad-info-desc">If you are in crisis or need immediate assistance, please call 911 or your local emergency number.</div>
                         </div>
                     </div>
 
@@ -138,7 +138,7 @@
                 <div class="gad-card-pane inactive" id="pane-assessment">
                     <!-- Top Area -->
                     <div class="gad-pane-header">
-                        <span class="gad-step-label" id="gadStepLabel">STEP 1 OF 9</span>
+                        <span class="gad-step-label" id="gadStepLabel">STEP 1 OF 7</span>
                         <button class="gad-back-btn" id="gadBackBtn" style="visibility: hidden" onclick="prevQuestionFlow()">
                             <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Previous
                         </button>
@@ -188,19 +188,19 @@
                         <div class="gad-complete-summary">
                             <div class="gad-summary-item">
                                 <span>Questions Answered</span>
-                                <strong id="gadSummaryCount">9 of 9</strong>
+                                <strong id="gadSummaryCount">7 of 7</strong>
                             </div>
                             <div class="gad-summary-item">
                                 <span>Assessment</span>
-                                <strong>PHQ-9 Depression Screening</strong>
+                                <strong>Depression Screening</strong>
                             </div>
                             <p class="gad-complete-note">
-                                Your answers will be safely evaluated. This screening helps assess clinical depression levels but does not substitute for expert advice.
+                                Your responses will be securely submitted for analysis. Remember, this is a screening tool and not a clinical diagnosis.
                             </p>
                         </div>
 
                         <!-- Form submission -->
-                        <form id="gadSubmitForm" action="/assessment/phq9/submit" method="POST" style="width:100%;">
+                        <form id="gadSubmitForm" action="/assessment/gad7/submit" method="POST" style="width:100%;">
                             @csrf
                             <div id="gadHiddenInputs"></div>
                             <button type="submit" class="gad-submit-results-btn">
@@ -252,18 +252,18 @@
     makeParticles('gadParticles',28);
 })();
 
-// PHQ-9 seeder questions mapping
-var PHQ_QUESTIONS = [
+// GAD-7 / PHQ seeder questions mapping
+var GAD_QUESTIONS = [
     @foreach($questions as $q)
     { id: {{ $q->id }}, text: @json($q->question_text) },
     @endforeach
 ];
 
-var PHQ_OPTIONS = [
-    { value: 0, label: 'Not at all' },
-    { value: 1, label: 'Several days' },
-    { value: 2, label: 'More than half the days' },
-    { value: 3, label: 'Nearly every day' }
+var GAD_OPTIONS = [
+    { value: 0, label: 'Never' },
+    { value: 1, label: 'Sometimes' },
+    { value: 2, label: 'Often' },
+    { value: 3, label: 'Nearly all the time' }
 ];
 
 var currentIdx = 0;
@@ -325,8 +325,8 @@ function startAssessmentFlow(){
  */
 function renderQuestionInSlide(slideId, idx) {
     var slide = document.getElementById(slideId);
-    var q = PHQ_QUESTIONS[idx];
-    var total = PHQ_QUESTIONS.length;
+    var q = GAD_QUESTIONS[idx];
+    var total = GAD_QUESTIONS.length;
     
     // Update labels and progress bar
     document.getElementById('gadStepLabel').textContent = 'STEP ' + (idx + 1) + ' OF ' + total;
@@ -350,7 +350,7 @@ function renderQuestionInSlide(slideId, idx) {
     var optionsContainer = slide.querySelector('.gad-options');
     optionsContainer.innerHTML = '';
     
-    PHQ_OPTIONS.forEach(function(opt) {
+    GAD_OPTIONS.forEach(function(opt) {
         var card = document.createElement('div');
         card.className = 'gad-option' + (answers[q.id] === opt.value ? ' selected' : '');
         card.setAttribute('data-value', opt.value);
@@ -384,7 +384,7 @@ function selectAnswerFlow(qId, val){
     
     setTimeout(function(){
         isTransitioning = false; // release lock for slide function
-        if(currentIdx < PHQ_QUESTIONS.length - 1){
+        if(currentIdx < GAD_QUESTIONS.length - 1){
             currentIdx++;
             transitionQuestion(currentIdx, 'next');
         } else {
@@ -515,7 +515,7 @@ function showCompleteFlow(){
     paneComplete.classList.add('enter-active-right', 'active');
     
     // Populate form payload
-    var total = PHQ_QUESTIONS.length;
+    var total = GAD_QUESTIONS.length;
     document.getElementById('gadSummaryCount').textContent = total + ' of ' + total;
     var hid = document.getElementById('gadHiddenInputs');
     hid.innerHTML = '';

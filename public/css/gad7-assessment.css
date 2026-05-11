@@ -1,0 +1,1004 @@
+/* ═══════════════════════════════════════
+   GAD-7 / DEPRESSION ASSESSMENT STYLES
+   Calm premium mental wellness aesthetic
+   Seamless Fixed Outer Card, Sliding Inner Content
+   ═══════════════════════════════════════ */
+
+:root {
+    --bg-overlay: rgba(20, 35, 20, 0.45);
+    --glass-bg: rgba(25, 45, 30, 0.55);
+    --glass-border: rgba(245, 241, 232, 0.12);
+    --primary-text: #F5F1E8;
+    --secondary-text: #D8D2C5;
+    
+    /* Premium Color Palette */
+    --accent-green: #7ED6A5;
+    --accent-blue: #4A90E2;
+    --accent-cream: #F3E7C9;
+    --accent-cream-hover: #faf0d9;
+    --deep-green-shadow: rgba(10, 20, 10, 0.5);
+    
+    /* Typography */
+    --serif: 'Cormorant Garamond', 'Georgia', serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+}
+
+/* ── Core Reset & Smoothness ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--sans);
+    background: #0a1a0d;
+    color: var(--primary-text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Unified Page Wrapper (Fixed Background) ── */
+.gad-page-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.gad-fixed-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.gad-fixed-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.gad-fixed-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        radial-gradient(ellipse at 50% 30%, rgba(20, 35, 20, 0.25) 0%, rgba(10, 20, 10, 0.55) 70%),
+        linear-gradient(180deg, rgba(10, 20, 10, 0.35) 0%, var(--bg-overlay) 40%, rgba(10, 20, 10, 0.65) 100%);
+}
+
+/* Ambient Glow Blobs */
+.gad-fixed-glow {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.gad-fixed-glow--top {
+    width: 600px;
+    height: 400px;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, rgba(200, 220, 180, 0.08) 0%, transparent 70%);
+}
+
+.gad-fixed-glow--bottom {
+    width: 800px;
+    height: 300px;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, rgba(180, 200, 160, 0.06) 0%, transparent 70%);
+}
+
+/* Particles & Birds */
+.gad-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.gad-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(245, 241, 232, 0.15);
+    animation: particleFloat linear infinite;
+}
+
+.gad-bird {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.2;
+    animation: birdFly linear infinite;
+}
+
+.gad-bird svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: var(--primary-text);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+@keyframes particleFloat {
+    0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+@keyframes birdFly {
+    0%   { transform: translate(0, 0) scaleX(1); }
+    25%  { transform: translate(15vw, -4vh) scaleX(1); }
+    50%  { transform: translate(30vw, -2vh) scaleX(1); }
+    75%  { transform: translate(45vw, -5vh) scaleX(1); }
+    100% { transform: translate(60vw, -3vh) scaleX(1); }
+}
+
+/* ── Content Container ── */
+.gad-content-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    padding: 3rem 1.5rem;
+}
+
+/* ── Header Section (Stationary Title and Subtitle) ── */
+.gad-header-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2.2rem;
+}
+
+/* Lotus Icon (Top) */
+.gad-lotus {
+    margin-bottom: 1.2rem;
+    animation: fadeInDown 1s ease 0.2s forwards;
+    opacity: 0;
+}
+
+.gad-lotus svg {
+    width: 52px;
+    height: 52px;
+    fill: none;
+    stroke: var(--secondary-text);
+    stroke-width: 1;
+    opacity: 0.7;
+}
+
+/* Heading */
+.gad-heading {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: var(--primary-text);
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s ease 0.4s forwards;
+    opacity: 0;
+}
+
+/* Decorative Divider */
+.gad-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s ease 0.55s forwards;
+    opacity: 0;
+}
+
+.gad-divider__line {
+    width: 48px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--secondary-text), transparent);
+    opacity: 0.4;
+}
+
+.gad-divider__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--secondary-text);
+    opacity: 0.5;
+}
+
+/* Subtitle */
+.gad-subtitle {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--secondary-text);
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    animation: fadeInDown 1s ease 0.65s forwards;
+    opacity: 0;
+}
+
+/* ── Permanent Fixed Glass Card Container ── */
+.gad-outer-card {
+    position: relative;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow:
+        0 16px 56px var(--deep-green-shadow),
+        0 0 100px rgba(10, 20, 10, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    padding: 2.2rem 2.5rem;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.8s forwards;
+    opacity: 0;
+    overflow: hidden; /* Clips elements migrating left and right */
+    transition: height 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ── Content Viewport and Sliding Inner Panes ── */
+.gad-card-viewport {
+    position: relative;
+    width: 100%;
+}
+
+.gad-card-pane {
+    width: 100%;
+    transition: transform 0.75s cubic-bezier(0.25, 1, 0.4, 1), opacity 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gad-card-pane.active {
+    position: relative;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.gad-card-pane.inactive {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Inner Pane Animation Vectors */
+.gad-card-pane.exit-right {
+    opacity: 0 !important;
+    transform: translateX(100%) !important;
+    pointer-events: none !important;
+}
+
+.gad-card-pane.enter-start-left {
+    position: absolute !important;
+    opacity: 0 !important;
+    transform: translateX(-100%) !important;
+    pointer-events: none !important;
+}
+
+.gad-card-pane.enter-active-left {
+    position: relative !important;
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    pointer-events: auto !important;
+}
+
+.gad-card-pane.exit-left {
+    opacity: 0 !important;
+    transform: translateX(-100%) !important;
+    pointer-events: none !important;
+}
+
+.gad-card-pane.enter-start-right {
+    position: absolute !important;
+    opacity: 0 !important;
+    transform: translateX(100%) !important;
+    pointer-events: none !important;
+}
+
+.gad-card-pane.enter-active-right {
+    position: relative !important;
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    pointer-events: auto !important;
+}
+
+/* ── Disclaimer Content ── */
+.gad-info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.4rem 0;
+}
+
+.gad-info-row:first-child { padding-top: 0.4rem; }
+.gad-info-row:last-child { padding-bottom: 0.4rem; }
+
+.gad-row-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245, 241, 232, 0.1), transparent);
+}
+
+.gad-icon-circle {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(245, 241, 232, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245, 241, 232, 0.04);
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.gad-info-row:hover .gad-icon-circle {
+    border-color: rgba(245, 241, 232, 0.3);
+    background: rgba(245, 241, 232, 0.07);
+}
+
+.gad-icon-circle svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--secondary-text);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.gad-info-text {
+    flex: 1;
+    text-align: left;
+}
+
+.gad-info-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-text);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.01em;
+}
+
+.gad-info-desc {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--secondary-text);
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+/* Cream CTA Button inside card */
+.gad-cta-wrapper {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.gad-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2.8rem;
+    background: var(--accent-cream);
+    color: #192D1E; /* Dark green */
+    font-family: var(--sans);
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow:
+        0 6px 24px rgba(243, 231, 201, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gad-cta-btn:hover {
+    background: var(--accent-cream-hover);
+    transform: scale(1.04) translateY(-2px);
+    box-shadow:
+        0 10px 36px rgba(243, 231, 201, 0.25),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.gad-cta-btn:active {
+    transform: scale(0.98);
+}
+
+.gad-cta-arrow {
+    display: inline-flex;
+    transition: transform 0.3s ease;
+}
+
+.gad-cta-btn:hover .gad-cta-arrow {
+    transform: translateX(4px);
+}
+
+.gad-cta-arrow svg {
+    width: 18px;
+    height: 18px;
+    stroke: #192D1E;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ── Question Assessment Inner Content ── */
+.gad-pane-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.gad-step-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-green);
+}
+
+.gad-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(245, 241, 232, 0.06);
+    border: 1px solid rgba(245, 241, 232, 0.1);
+    color: var(--secondary-text);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.gad-back-btn:hover {
+    background: rgba(245, 241, 232, 0.12);
+    border-color: rgba(245, 241, 232, 0.2);
+    color: var(--primary-text);
+}
+
+.gad-back-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Animated Progress Bar */
+.gad-progress {
+    margin-bottom: 2.2rem;
+}
+
+.gad-progress__track {
+    width: 100%;
+    height: 5px;
+    background: rgba(245, 241, 232, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.gad-progress__fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #5bb885, var(--accent-green), #a3e4be);
+    border-radius: 999px;
+    transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 0 12px rgba(126, 214, 165, 0.3);
+}
+
+/* Question Slides Viewport */
+.gad-question-viewport {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    transition: height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Double-buffered slides */
+.gad-question-slide {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.55s cubic-bezier(0.25, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.gad-question-slide.active {
+    position: relative;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.gad-question-slide.inactive {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Slide direction triggers */
+.gad-question-slide.slide-out-left {
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+}
+
+.gad-question-slide.slide-out-right {
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+}
+
+/* Elegant Center Question Text */
+.gad-question-area {
+    text-align: center;
+    padding: 0.5rem 0 2rem;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gad-question-text {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+    font-weight: 400;
+    color: var(--primary-text);
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+}
+
+/* Answer Grid & Cards styling */
+.gad-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+}
+
+.gad-option {
+    position: relative;
+    background: rgba(15, 30, 20, 0.65); /* Dark transparent green background */
+    border: 1.5px solid rgba(245, 241, 232, 0.08);
+    border-radius: 20px;
+    padding: 1.8rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    user-select: none;
+    box-shadow: 
+        0 4px 12px rgba(10, 20, 10, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.gad-option:hover {
+    border-color: rgba(126, 214, 165, 0.35);
+    background: rgba(25, 45, 30, 0.75);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 
+        0 12px 28px rgba(126, 214, 165, 0.15), 
+        0 0 18px rgba(126, 214, 165, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.gad-option.selected {
+    border-color: var(--accent-green);
+    background: linear-gradient(135deg, rgba(30, 65, 42, 0.8), rgba(15, 30, 20, 0.75));
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 
+        0 12px 32px rgba(126, 214, 165, 0.3), 
+        0 0 25px rgba(126, 214, 165, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: pulseBorder 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pulseBorder {
+    0% {
+        box-shadow: 
+            0 12px 32px rgba(126, 214, 165, 0.2), 
+            0 0 15px rgba(126, 214, 165, 0.1);
+        border-color: var(--accent-green);
+    }
+    100% {
+        box-shadow: 
+            0 12px 36px rgba(126, 214, 165, 0.35), 
+            0 0 30px rgba(126, 214, 165, 0.25);
+        border-color: #9bf2c1;
+    }
+}
+
+.gad-option__value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: rgba(245, 241, 232, 0.25);
+    transition: color 0.3s;
+}
+
+.gad-option.selected .gad-option__value,
+.gad-option:hover .gad-option__value {
+    color: var(--accent-green);
+}
+
+.gad-option__label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--secondary-text);
+    line-height: 1.4;
+    transition: color 0.3s;
+}
+
+.gad-option.selected .gad-option__label {
+    color: var(--primary-text);
+    font-weight: 600;
+}
+
+.gad-option__radio {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid rgba(245, 241, 232, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.gad-option.selected .gad-option__radio {
+    border-color: var(--accent-green);
+    background: var(--accent-green);
+}
+
+.gad-option__radio::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #192D1E;
+    display: none;
+}
+
+.gad-option.selected .gad-option__radio::after {
+    display: block;
+}
+
+/* Card Footer Note inside Card */
+.gad-pane-footer {
+    text-align: center;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(245, 241, 232, 0.06);
+}
+
+.gad-pane-footer-text {
+    font-size: 0.75rem;
+    color: var(--secondary-text);
+    opacity: 0.5;
+    letter-spacing: 0.03em;
+}
+
+/* ── Completion View Screen ── */
+.gad-complete-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gad-complete-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(126, 214, 165, 0.12);
+    border: 2px solid rgba(126, 214, 165, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(126, 214, 165, 0); }
+    50% { box-shadow: 0 0 30px 8px rgba(126, 214, 165, 0.18); }
+}
+
+.gad-complete-icon svg {
+    width: 36px;
+    height: 36px;
+    stroke: var(--accent-green);
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.gad-complete-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    color: var(--primary-text);
+    margin-bottom: 0.75rem;
+}
+
+.gad-complete-subtitle {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--secondary-text);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.gad-complete-summary {
+    background: rgba(20, 35, 20, 0.45);
+    border: 1px solid rgba(245, 241, 232, 0.08);
+    border-radius: 24px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 2rem;
+    box-shadow: 0 12px 48px rgba(10, 20, 10, 0.4);
+    margin-bottom: 2rem;
+    text-align: left;
+    width: 100%;
+    max-width: 500px;
+}
+
+.gad-summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+}
+
+.gad-summary-item+.gad-summary-item {
+    border-top: 1px solid rgba(245, 241, 232, 0.06);
+}
+
+.gad-summary-item span {
+    font-size: 0.85rem;
+    color: var(--secondary-text);
+}
+
+.gad-summary-item strong {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-green);
+}
+
+.gad-complete-note {
+    font-size: 0.82rem;
+    color: var(--secondary-text);
+    line-height: 1.7;
+    opacity: 0.8;
+    margin-top: 1rem;
+}
+
+.gad-submit-results-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1rem 2.8rem;
+    background: var(--accent-cream);
+    color: #192D1E;
+    font-family: var(--sans);
+    font-size: 0.98rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(243, 231, 201, 0.15);
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    margin-bottom: 1.2rem;
+    width: auto;
+}
+
+.gad-submit-results-btn:hover {
+    background: var(--accent-cream-hover);
+    transform: scale(1.04) translateY(-2px);
+    box-shadow: 0 10px 36px rgba(243, 231, 201, 0.25);
+}
+
+.gad-submit-results-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: #192D1E;
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s;
+}
+
+.gad-submit-results-btn:hover svg {
+    transform: translateX(4px);
+}
+
+.gad-complete-retake {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: 1px solid rgba(245, 241, 232, 0.12);
+    color: var(--secondary-text);
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.6rem 1.6rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.gad-complete-retake:hover {
+    background: rgba(245, 241, 232, 0.06);
+    border-color: rgba(245, 241, 232, 0.2);
+    color: var(--primary-text);
+}
+
+/* ── Persistent Footer ── */
+.gad-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    opacity: 0.6;
+    margin-top: 1.5rem;
+}
+
+.gad-footer__lotus svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--secondary-text);
+    stroke-width: 1;
+    opacity: 0.5;
+}
+
+.gad-footer__text {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--secondary-text);
+    letter-spacing: 0.03em;
+}
+
+/* ── Animations ── */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive Styling ── */
+@media (max-width: 900px) {
+    .gad-outer-card {
+        padding: 2rem;
+        border-radius: 24px;
+    }
+
+    .gad-options {
+        gap: 0.75rem;
+    }
+
+    .gad-option {
+        padding: 1.4rem 0.8rem;
+        border-radius: 16px;
+    }
+}
+
+@media (max-width: 680px) {
+    .gad-content-container {
+        padding: 2rem 1rem;
+    }
+
+    .gad-heading {
+        font-size: 2.1rem;
+    }
+
+    .gad-subtitle {
+        font-size: 1rem;
+    }
+
+    .gad-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gad-outer-card {
+        padding: 1.6rem 1.4rem;
+        border-radius: 20px;
+    }
+
+    .gad-option {
+        padding: 1.2rem 0.6rem;
+    }
+
+    .gad-question-text {
+        font-size: 1.35rem;
+    }
+
+    .gad-complete-summary {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .gad-options {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    .gad-option {
+        padding: 1rem 0.5rem;
+        border-radius: 14px;
+    }
+
+    .gad-option__value {
+        font-size: 1.3rem;
+    }
+
+    .gad-option__label {
+        font-size: 0.78rem;
+    }
+
+    .gad-outer-card {
+        padding: 1.2rem 1rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .gad-content-container {
+        max-width: 950px;
+    }
+
+    .gad-outer-card {
+        padding: 2.5rem;
+    }
+}
