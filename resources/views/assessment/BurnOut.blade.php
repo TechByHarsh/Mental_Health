@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Burnout Assessment — A supportive, confidential clinical screening tool to help you measure and support your energy, work-life balance, and chronic stress.">
-    <title>Burnout Assessment — Therawell</title>
+    <title>Burnout Assessment – Therawell</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

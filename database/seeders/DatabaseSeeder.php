@@ -17,9 +17,25 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        User::firstOrCreate(
+            ['email' => 'test@example.com'],
+            [
+                'name' => 'Test User',
+                'password' => bcrypt('password'), // Add a default password if creating
+            ]
+        );
+
+        $this->call([
+            PHQ9QuestionsSeeder::class,
+            GAD7Seeder::class,
+            StressTestSeeder::class,
+            SleepTestSeeder::class,
+            SocialAnxietySeeder::class,
+            BurnoutTestSeeder::class,
+            PanicDisorderSeeder::class,
+            EmotionalWellnessSeeder::class,
+            SelfEsteemSeeder::class,
+            RelationshipHealthSeeder::class,
         ]);
     }
 }

@@ -201,40 +201,25 @@
                 <div class="hidden md:flex items-center gap-8">
                     <a href="/" class="text-sm font-medium text-olive-light hover:text-olive transition-colors duration-300">Home</a>
                     <a href="/assessment/phq9" class="text-sm font-medium text-olive-light hover:text-olive transition-colors duration-300">Test</a>
-                    <a href="/services" class="text-sm font-medium text-olive-light hover:text-olive transition-colors duration-300">Therapist</a>
+                    
                 </div>
 
                 <!-- Right Side Actions Buttons -->
                 <div class="flex items-center gap-3">
-                    <a href="/contact" class="text-xs md:text-sm font-medium text-olive border border-olive/35 hover:bg-cream-dark/20 px-5 py-2.5 rounded-full transition-all duration-300">
-                        Contact
-                    </a>
+                   
                     <a href="/assessment/phq9" class="text-xs md:text-sm font-semibold text-white bg-olive hover:bg-olive-dark shadow-[0_4px_14px_rgba(61,92,63,0.25)] px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-[1.02] mr-1">
-                        Book Now
+                        Test
                     </a>
 
-                    <!-- Premium Profile Button & Dropdown Section -->
-                    @php
-                        // FUTURE BACKEND INTEGRATION PREPARATION
-                        // When database & authentication are ready, simply bind these variables to your Auth system:
-                        // e.g., $user_name = Auth::user()->name;
-                        // For now, they fallback to elegant, premium placeholder data matching the wellness aesthetic.
-                        
-                        $user_name = Auth::user()?->name ?? 'Evelyn Carter';
-                        $user_email = Auth::user()?->email ?? 'evelyn@therawel.com';
-                        $user_avatar = Auth::user()?->profile_photo ?? 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150';
-                        $user_first_name = explode(' ', $user_name)[0];
-                    @endphp
+                    
 
                     <div class="relative" id="profile-container">
                         <button id="profile-btn" class="flex items-center gap-2.5 p-1.5 pr-3.5 rounded-full bg-white/20 hover:bg-white/35 border border-white/30 backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-[1.02] focus:outline-none group" aria-haspopup="true" aria-expanded="false">
                             <div class="w-8 h-8 rounded-full overflow-hidden border border-white/40 shadow-sm relative flex items-center justify-center bg-sage text-white font-serif font-semibold text-sm select-none">
                                 <!-- Elegant Avatar Image (calming aesthetic) -->
-                                <img src="{{ $user_avatar }}" alt="{{ $user_name }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}" alt="{{ Auth::user()->name }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             </div>
-                            <span class="hidden md:inline text-xs font-semibold tracking-wider text-olive group-hover:text-olive-dark transition-colors duration-300 select-none">
-                                {{ $user_first_name }}
-                            </span>
+                            
                             <!-- Minimal Down Chevron -->
                             <svg class="w-3.5 h-3.5 text-olive-light group-hover:text-olive transition-transform duration-300" id="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
@@ -244,36 +229,12 @@
                         <!-- Dropdown Menu -->
                         <div id="profile-dropdown" class="absolute right-0 mt-3 w-80 bg-white/60 backdrop-blur-2xl border border-white/45 rounded-[24px] shadow-[0_20px_50px_rgba(30,58,35,0.15)] opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-50 transform origin-top-right">
                             
-                            <!-- Top User Info -->
-                            <div class="p-5 flex items-center gap-3 border-b border-olive/10 bg-white/30 rounded-t-[24px]">
-                                <div class="w-11 h-11 rounded-full overflow-hidden border border-white/60 shadow-sm flex items-center justify-center bg-sage text-white font-serif font-semibold text-base">
-                                    <img src="{{ $user_avatar }}" alt="{{ $user_name }}" class="w-full h-full object-cover">
-                                </div>
-                                <div class="flex flex-col items-start text-left">
-                                    <span class="text-[10px] font-bold tracking-[0.15em] text-sage uppercase leading-none">Welcome Back</span>
-                                    <span class="text-base font-serif font-normal text-olive leading-tight mt-1 truncate max-w-[170px]">
-                                        {{ $user_name }}
-                                    </span>
-                                    <span class="text-[11px] text-olive-light/80 truncate max-w-[170px] font-light mt-0.5">
-                                        {{ $user_email }}
-                                    </span>
-                                </div>
-                            </div>
+                          
 
                             <!-- Menu Options -->
                             <div class="p-3.5 flex flex-col gap-1">
-                                <!-- Option 1: Personal Details -->
-                                <a href="/profile" class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/40 group/item transition-all duration-300 text-left">
-                                    <div class="w-8 h-8 rounded-xl bg-sage/10 flex items-center justify-center text-sage group-hover/item:bg-sage group-hover/item:text-white transition-all duration-300 flex-shrink-0">
-                                        <!-- Outline User Icon -->
-                                        <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex flex-col">
-                                        <span class="text-[13px] font-medium text-olive group-hover/item:text-olive-dark transition-colors duration-200">Personal Details</span>
-                                        <span class="text-[10px] text-olive-light/70 font-light">View your profile info</span>
-                                    </div>
+                                
+                                    
                                 </a>
 
                                 <!-- Option 2: Test Results -->
@@ -350,8 +311,8 @@
             </h1>
 
             <!-- Short Calming Paragraph -->
-            <p class="animate-fade-in-up font-sans text-base sm:text-lg md:text-xl text-olive-light max-w-xl mx-auto leading-relaxed mb-9 font-normal select-none"
-               style="animation-delay: 450ms;">
+            <p class="animate-fade-in-up font-sans text-base sm:text-lg md:text-xl text-[#F8F6F0] max-w-xl mx-auto leading-relaxed mb-9 font-normal select-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+            style="animation-delay: 450ms;">
                 A safe journey toward healing, balance, and emotional wellness.
             </p>
 
@@ -361,9 +322,7 @@
                 <a href="/assessment/phq9" class="w-full sm:w-auto text-center font-sans font-medium text-sm tracking-wider uppercase text-white bg-olive hover:bg-olive-dark px-9 py-4.5 rounded-full shadow-[0_8px_20px_rgba(61,92,63,0.3)] transition-all duration-300 hover:scale-105 active:scale-95">
                     Start Test
                 </a>
-                <a href="/services" class="w-full sm:w-auto text-center font-sans font-medium text-sm tracking-wider uppercase text-olive bg-white/25 border border-olive/35 backdrop-blur-sm hover:bg-white/45 px-9 py-4.5 rounded-full shadow-sm transition-all duration-300 hover:scale-105 active:scale-95">
-                    Find Therapist
-                </a>
+                
             </div>
 
            
@@ -438,7 +397,7 @@
             </h2>
 
             <!-- Short Calming Subtitle -->
-            <p class="font-sans text-sm sm:text-base text-olive-light/85 max-w-2xl mx-auto leading-relaxed select-none relative z-10 font-light">
+            <p class="font-sans text-sm sm:text-base text-white/85 max-w-2xl mx-auto leading-relaxed select-none relative z-10 font-light">
                 Understand your emotions, stress levels, and mental well-being through safe, guided self-assessment tests.
             </p>
 
@@ -471,7 +430,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Depression Test
                     </h3>
-                    <p class="font-sans text-[12px] text-olive-light/75 group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
                         Assess mood fluctuations, persistent sadness, low energy, and interest in daily activities.
                     </p>
                 </div>
@@ -499,7 +458,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Anxiety Test
                     </h3>
-                    <p class="font-sans text-[12px] text-olive-light/75 group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
                         Measure worry, cognitive and somatic tension, nervousness, and emotional distress.
                     </p>
                 </div>
@@ -527,7 +486,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Stress Test
                     </h3>
-                    <p class="font-sans text-[12px] text-olive-light/75 group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
                         Evaluate recent stressors, mental workload, coping efficacy, and tension indicators.
                     </p>
                 </div>
@@ -556,7 +515,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Social Anxiety Test
                     </h3>
-                    <p class="font-sans text-[12px] text-olive-light/75 group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
                         Explore comfort levels, social phobias, and avoidance behaviors in interpersonal scenarios.
                     </p>
                 </div>
@@ -584,7 +543,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Sleep Quality Test
                     </h3>
-                    <p class="font-sans text-[12px] text-olive-light/75 group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
                         Examine sleep cycles, latency, insomnia tendencies, and daytime sleepiness symptoms.
                     </p>
                 </div>
@@ -612,7 +571,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Burnout Test
                     </h3>
-                    <p class="font-sans text-[12px] text-olive-light/75 group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
                         Detect professional, mental, and physical fatigue, detachment, and emotional exhaustion.
                     </p>
                 </div>
@@ -640,7 +599,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Panic Disorder Test
                     </h3>
-                    <p class="font-sans text-[12px] text-olive-light/75 group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
                         Assess sudden rushes of hyper-fear, panic episodes, palpitations, and somatic shock responses.
                     </p>
                 </div>
@@ -669,7 +628,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Emotional Wellness
                     </h3>
-                    <p class="font-sans text-[12px] text-olive-light/75 group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
                         Evaluate mood regulation, self-awareness, positive psychology markers, and wellness thresholds.
                     </p>
                 </div>
@@ -697,7 +656,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Self-Esteem Test
                     </h3>
-                    <p class="font-sans text-[12px] text-olive-light/75 group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
                         Examine your self-worth, positive self-regard, internal confidence, and personal self-image.
                     </p>
                 </div>
@@ -725,7 +684,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Relationship Health
                     </h3>
-                    <p class="font-sans text-[12px] text-olive-light/75 group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
                         Analyze codependency, communication pathways, bonding, empathy, and partner trust factors.
                     </p>
                 </div>
@@ -983,6 +942,8 @@
 
         </div>
     </section>
+
+    <x-contact-section />
 
     <!-- Dropdown Interactive Script -->
     <script>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Stress Assessment — A gentle, confidential clinical screening tool to help you measure and understand your current stress levels.">
-    <title>Stress Assessment — Therawell</title>
+    <title>Stress Assessment – Therawell</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

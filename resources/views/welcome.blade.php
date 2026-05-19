@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Therawell – Guided therapy and holistic wellness programs to help you heal, grow, and build lasting balance.">
-    <title>Therawell – Emotional &amp; Physical Growth</title>
+    <title>Home – Therawell</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -419,7 +419,7 @@
         <div class="nav-left">
             <a href="/" class="nav-home-pill" id="nav-home">
                 <span class="nav-home-dot"></span>
-                Home
+                Dashboard
             </a>
             <ul class="nav-links">
                 <li><a href="/about">About</a></li>
@@ -430,7 +430,7 @@
 
         <div class="nav-logo">therawell</div>
 
-        <a href="/assessment/phq9" class="nav-cta" id="book-session-btn">Book A Session</a>
+        <a href="/login" class="nav-cta" id="book-session-btn">Book A Session</a>
     </nav>
 
     <!-- ══ HERO BODY ══ -->
@@ -448,7 +448,7 @@
                 Guided therapy and holistic wellness programs to help you heal, grow, and build lasting balance.
             </p>
 
-            <a href="/assessment/phq9" class="hero-btn" id="explore-btn">Explore Programs</a>
+            <a href="/login" class="hero-btn" id="explore-btn">Explore Programs</a>
         </div>
 
         <!-- Center: Ambient Meditation Scene -->
@@ -1870,18 +1870,18 @@ footer.tw-footer,
                 <div class="tw-contact-item">
                     <span class="tw-contact-key">Phone</span>
                     <span class="tw-contact-val">
-                        <a href="tel:+16045552874">+1 (604) 555-2874</a>
+                        <a href="tel:+16045552874">8882599398</a>
                     </span>
                 </div>
                 <div class="tw-contact-item">
                     <span class="tw-contact-key">Email</span>
                     <span class="tw-contact-val">
-                        <a href="mailto:hello@therawell.com">hello@therawell.com</a>
+                        <a href="mailto:therawell@gmail.com">therawell@gmail.com</a>
                     </span>
                 </div>
                 <div class="tw-contact-item">
                     <span class="tw-contact-key">Address</span>
-                    <span class="tw-contact-val">18 Taman Sari Road,<br>Ubud, Bali, Indonesia</span>
+                    <span class="tw-contact-val">New Lane,<br>Salt Lake, Kolkata, India</span>
                 </div>
             </div>
         </div>

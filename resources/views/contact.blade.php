@@ -219,9 +219,9 @@
                 </div>
                 <div class="mt-auto space-y-1">
                     <p class="text-[0.7rem] text-slate-500 font-medium mb-2">Office</p>
-                    <p class="text-slate-700 text-[0.95rem] font-medium">1004 Teuku Umar Street</p>
-                    <p class="text-slate-700 text-[0.95rem] font-medium">Denpasar, Bali 80113</p>
-                    <p class="text-slate-700 text-[0.95rem] font-medium">Indonesia</p>
+                    <p class="text-slate-700 text-[0.95rem] font-medium">New Lane Road</p>
+                    <p class="text-slate-700 text-[0.95rem] font-medium">salt Lake,Kolkata</p>
+                    <p class="text-slate-700 text-[0.95rem] font-medium">India</p>
                 </div>
             </div>
 
@@ -259,12 +259,12 @@
                 <div class="mt-auto w-full flex items-center justify-center gap-8">
                     <div class="text-center">
                         <p class="text-[0.7rem] text-slate-500 font-medium mb-1">Email</p>
-                        <p class="text-slate-700 text-[0.95rem] font-medium">hello@therawell.com</p>
+                        <p class="text-slate-700 text-[0.95rem] font-medium">therawell@gmail.com.com</p>
                     </div>
                     <div class="w-[1px] h-10 bg-slate-200"></div>
                     <div class="text-center">
                         <p class="text-[0.7rem] text-slate-500 font-medium mb-1">Phone</p>
-                        <p class="text-slate-700 text-[0.95rem] font-medium">+1 (604) 555-2874</p>
+                        <p class="text-slate-700 text-[0.95rem] font-medium">8882599398</p>
                     </div>
                 </div>
             </div>
@@ -285,40 +285,40 @@
                 <!-- Left: Location List -->
                 <div class="flex flex-col space-y-2">
                     <button class="loc-btn flex items-center justify-between w-full px-6 py-6 border-b border-transparent text-left transition-all duration-300 bg-[#f5f3ec] rounded-xl" data-loc="1">
-                        <span class="text-slate-800 font-serif text-xl"><span class="text-slate-400 text-sm font-sans mr-4 font-medium">01</span> Ubud</span>
+                        <span class="text-slate-800 font-serif text-xl"><span class="text-slate-400 text-sm font-sans mr-4 font-medium">01</span> Bandra</span>
                         <span class="loc-plus text-slate-400 text-xl font-light opacity-0">+</span>
                     </button>
                     
                     <button class="loc-btn flex items-center justify-between w-full px-6 py-6 border-b border-slate-200/60 text-left transition-all duration-300 hover:bg-slate-50/50 rounded-xl" data-loc="2">
-                        <span class="text-slate-800 font-serif text-xl"><span class="text-slate-400 text-sm font-sans mr-4 font-medium">02</span> Seminyak</span>
+                        <span class="text-slate-800 font-serif text-xl"><span class="text-slate-400 text-sm font-sans mr-4 font-medium">02</span> Anna Nagar</span>
                         <span class="loc-plus text-slate-400 text-xl font-light transition-opacity duration-300">+</span>
                     </button>
                     
                     <button class="loc-btn flex items-center justify-between w-full px-6 py-6 border-b border-slate-200/60 text-left transition-all duration-300 hover:bg-slate-50/50 rounded-xl" data-loc="3">
-                        <span class="text-slate-800 font-serif text-xl"><span class="text-slate-400 text-sm font-sans mr-4 font-medium">03</span> Sanur</span>
+                        <span class="text-slate-800 font-serif text-xl"><span class="text-slate-400 text-sm font-sans mr-4 font-medium">03</span> Kormangala</span>
                         <span class="loc-plus text-slate-400 text-xl font-light transition-opacity duration-300">+</span>
                     </button>
                     
                     <button class="loc-btn flex items-center justify-between w-full px-6 py-6 border-b border-slate-200/60 text-left transition-all duration-300 hover:bg-slate-50/50 rounded-xl" data-loc="4">
-                        <span class="text-slate-800 font-serif text-xl"><span class="text-slate-400 text-sm font-sans mr-4 font-medium">04</span> Kura Mandalika</span>
+                        <span class="text-slate-800 font-serif text-xl"><span class="text-slate-400 text-sm font-sans mr-4 font-medium">04</span> Salt Lake</span>
                         <span class="loc-plus text-slate-400 text-xl font-light transition-opacity duration-300">+</span>
                     </button>
                 </div>
 
                 <!-- Center: Image Display -->
                 <div class="bg-[#f5f3ec] rounded-2xl p-6 lg:p-8 flex items-center justify-center">
-                    <img src="{{ asset('images/location1.png') }}" alt="Wellness Location" id="loc-img" class="w-full h-full object-cover rounded-md shadow-[0_4px_20px_rgba(0,0,0,0.05)] aspect-[4/3] lg:aspect-square transition-opacity duration-500">
+                    <img src="{{ asset('images/location1.jpg') }}" alt="Wellness Location" id="loc-img" class="w-full h-full object-cover rounded-md shadow-[0_4px_20px_rgba(0,0,0,0.05)] aspect-[4/3] lg:aspect-square transition-opacity duration-500">
                 </div>
 
                 <!-- Right: Location Info -->
                 <div class="bg-[#f5f3ec] rounded-2xl p-10 flex flex-col items-center justify-center text-center relative overflow-hidden min-h-[350px]">
                     <div id="loc-info-content" class="transition-opacity duration-500 flex flex-col items-center w-full space-y-8">
-                        <h3 class="font-serif text-[1.7rem] text-slate-800" id="loc-name">Ubud, Bali</h3>
+                        <h3 class="font-serif text-[1.7rem] text-slate-800" id="loc-name">Bandra,Mumbai</h3>
                         
                         <div class="w-full space-y-1">
                             <p class="text-[0.65rem] text-slate-500 font-semibold mb-2 uppercase tracking-widest">Address</p>
                             <p class="text-slate-700 text-[0.9rem] font-medium leading-relaxed" id="loc-address">
-                                42 Serenity Lane<br>Ubud, Bali, Indonesia
+                                Bandra West<br>Bandra West,Mumbai,India;
                             </p>
                         </div>
                         
@@ -562,28 +562,28 @@
     <script>
         const locations = {
             1: {
-                name: "Ubud, Bali",
-                address: "42 Serenity Lane<br>Ubud, Bali, Indonesia",
+                name: "Bandra Wellness Center",
+                address: "21 Hill Road<br>Bandra West, Mumbai, India",
                 hours: "Mon – Fri<br>08:00 AM – 06:00 PM",
-                image: "{{ asset('images/location1.png') }}"
+                image: "{{ asset('images/location1.jpg') }}"
             },
             2: {
-                name: "Seminyak, Bali",
-                address: "18 Taman Sari Road<br>Seminyak, Bali, Indonesia",
+                name: "Anna Nagar Mind Care",
+                address: "14 Second Avenue<br>Anna Nagar, Chennai, India",
                 hours: "Mon – Fri<br>09:00 AM – 07:00 PM",
-                image: "{{ asset('images/location2.png') }}"
+                image: "{{ asset('images/location2.jpg') }}"
             },
             3: {
-                name: "Sanur, Bali",
-                address: "99 Coastal Path<br>Sanur, Bali, Indonesia",
+                name: "Koramangala Therapy Hub",
+                address: "88 5th Block<br>Koramangala, Bengaluru, India",
                 hours: "Tue – Sun<br>07:00 AM – 05:00 PM",
-                image: "{{ asset('images/location3.png') }}"
+                image: "{{ asset('images/location3.jpg') }}"
             },
             4: {
-                name: "Kura Mandalika",
-                address: "1 Ocean View Drive<br>Mandalika, Lombok, Indonesia",
+                name: "Salt Lake Wellness Studio",
+                address: "55 Sector V<br>Salt Lake, Kolkata, India",
                 hours: "Mon – Sat<br>10:00 AM – 08:00 PM",
-                image: "{{ asset('images/location4.png') }}"
+                image: "{{ asset('images/location4.jpg') }}"
             }
         };
 
@@ -1067,7 +1067,7 @@
                     </div>
                     <div class="tw-contact-item">
                         <span class="tw-contact-key">Address</span>
-                        <span class="tw-contact-val">18 Taman Sari Road,<br>Ubud, Bali, Indonesia</span>
+                        <span class="tw-contact-val">New Lane<br>Salt Lake, Kolkata, India</span>
                     </div>
                 </div>
             </div>
@@ -1084,7 +1084,7 @@
         </div>
 
         <div class="tw-footer-bottom">
-            <p class="tw-footer-copyright">© therawell 2035. All rights reserved.</p>
+            <p class="tw-footer-copyright">© therawell 2036. All rights reserved.</p>
             <div class="tw-footer-bottom-links">
                 <a href="/privacy-policy">Privacy Policy</a>
                 <a href="/terms">Terms &amp; Conditions</a>

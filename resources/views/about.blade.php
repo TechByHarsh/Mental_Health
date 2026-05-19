@@ -340,11 +340,11 @@
             <!-- Grid Container -->
             <div class="border-t border-slate-200 divide-y divide-slate-200">
                 
-                <!-- Location Group 1: Bali -->
+                <!-- Location Group 1: Kolkata -->
                 <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr]">
                     <!-- Location Label -->
                     <div class="py-8 lg:py-12 pr-8">
-                        <h3 class="font-serif text-2xl text-slate-800">Bali, All Locations</h3>
+                        <h3 class="font-serif text-2xl text-slate-800">Kolkata, All Locations </h3>
                     </div>
                     
                     <!-- Therapists List -->
@@ -379,7 +379,7 @@
                     </div>
                 </div>
 
-                <!-- Location Group 1: Bali (Row 2, no label) -->
+                <!-- Location Group 1: Kolkata (Row 2, no label) -->
                 <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr]">
                     <!-- Location Label (Empty) -->
                     <div class="hidden lg:block py-12 pr-8"></div>
@@ -416,11 +416,11 @@
                     </div>
                 </div>
 
-                <!-- Location Group 2: Lombok -->
+                <!-- Location Group 2: Mumbai -->
                 <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr]">
                     <!-- Location Label -->
                     <div class="py-8 lg:py-12 pr-8">
-                        <h3 class="font-serif text-2xl text-slate-800">Kuta Mandalika,<br>Lombok</h3>
+                        <h3 class="font-serif text-2xl text-slate-800">Bandra West,<br>Mumbai</h3>
                     </div>
                     
                     <!-- Therapists List -->

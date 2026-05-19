@@ -35,7 +35,7 @@ class AssessmentController extends Controller
 
         // Persist result
         $result                = new Result();
-        $result->user_id       = 1; // TODO: replace with auth()->id() when authentication is added
+        $result->user_id       = auth()->id();
         $result->assessment_id = 1;
         $result->score         = $score;
         $result->severity      = $severity;
@@ -55,8 +55,10 @@ class AssessmentController extends Controller
 
     public function history()
     {
-        $results = Result::orderBy('created_at', 'desc')->get();
-
+       $results = Result::where('user_id', auth()->id())
+                ->orderBy('created_at', 'desc')
+                ->get();
+                
         return view('assessment.history', compact('results'));
     }
 
@@ -92,8 +94,8 @@ class AssessmentController extends Controller
 
         // Persist result
         $result                = new Result();
-        $result->user_id       = 1; // TODO: replace with auth()->id() when authentication is added
-        $result->assessment_id = 2; // GAD-7
+        $result->user_id       = auth()->id();
+        $result->assessment_id = 2; 
         $result->score         = $score;
         $result->severity      = $severity;
         $result->save();
@@ -144,8 +146,8 @@ class AssessmentController extends Controller
 
         // Persist result
         $result                = new Result();
-        $result->user_id       = 1; // TODO: replace with auth()->id() when authentication is added
-        $result->assessment_id = 3; // stress
+        $result->user_id       = auth()->id();
+        $result->assessment_id = 3; 
         $result->score         = $score;
         $result->severity      = $severity;
         $result->save();
@@ -192,7 +194,7 @@ class AssessmentController extends Controller
         }
 
         $result                = new Result();
-        $result->user_id       = 1; 
+        $result->user_id       =auth()->id();
         $result->assessment_id = 4; 
         $result->score         = $score;
         $result->severity      = $severity;
@@ -244,7 +246,7 @@ class AssessmentController extends Controller
         }
 
         $result                = new Result();
-        $result->user_id       = 1; 
+        $result->user_id       = auth()->id();
         $result->assessment_id = 5; 
         $result->score         = $score;
         $result->severity      = $severity;
@@ -293,7 +295,7 @@ class AssessmentController extends Controller
         }
 
         $result                = new Result();
-        $result->user_id       = 1; 
+        $result->user_id       = auth()->id();
         $result->assessment_id = 6; 
         $result->score         = $score;
         $result->severity      = $severity;
@@ -342,7 +344,7 @@ class AssessmentController extends Controller
         }
 
         $result                = new Result();
-        $result->user_id       = 1; 
+        $result->user_id       =auth()->id();
         $result->assessment_id = 7; 
         $result->score         = $score;
         $result->severity      = $severity;
@@ -359,6 +361,156 @@ class AssessmentController extends Controller
         }
         return view('assessment.result',compact('score','severity'));
     }
+
+    // Emotional Wellness Disorder 
+
+     
+    public function showEmotionalWellness()
+    {
+        $questions=Question::where("assessment_id",8)->get();
+
+        return view ('assessment.emotionalwellness', compact('questions'));
+    }
+
+    public function submitEmotionalWellness( Request $request)
+    {
+        $answers=$request->answers;
+        if(!$answers){
+            return back()->withErrors(['answers'=>'Please answer all questions']);
+
+        }
+        $score=array_sum($answers);
+
+         if ($score <= 7) {
+            $severity = 'Minimal';
+        } elseif ($score <= 14) {
+            $severity = 'Mild';
+        } elseif ($score <= 22) {
+            $severity = 'Moderate';
+        } else {
+            $severity = 'Severe';
+        }
+
+        $result                = new Result();
+        $result->user_id       = auth()->id();
+        $result->assessment_id = 8; 
+        $result->score         = $score;
+        $result->severity      = $severity;
+        $result->save();
+
+    // to save every questions response in response table
+
+        foreach ($answers as $question_id => $answer) {
+            $response              = new Response();
+            $response->result_id   = $result->id;
+            $response->question_id = $question_id;
+            $response->answer      = $answer;
+            $response->save();
+        }
+        return view('assessment.result',compact('score','severity'));
+    }
+
+    // Self Esteem Test
+
+
+  
+    public function showSelfEsteem()
+    {
+        $questions=Question::where("assessment_id",9)->get();
+
+        return view ('assessment.SelfEsteem', compact('questions'));
+    }
+
+    public function submitSelfEsteem( Request $request)
+    {
+        $answers=$request->answers;
+        if(!$answers){
+            return back()->withErrors(['answers'=>'Please answer all questions']);
+
+        }
+        $score=array_sum($answers);
+
+         if ($score <= 7) {
+            $severity = 'Minimal';
+        } elseif ($score <= 14) {
+            $severity = 'Mild';
+        } elseif ($score <= 22) {
+            $severity = 'Moderate';
+        } else {
+            $severity = 'Severe';
+        }
+
+        $result                = new Result();
+        $result->user_id       = auth()->id();
+        $result->assessment_id = 9; 
+        $result->score         = $score;
+        $result->severity      = $severity;
+        $result->save();
+
+    // to save every questions response in response table
+
+        foreach ($answers as $question_id => $answer) {
+            $response              = new Response();
+            $response->result_id   = $result->id;
+            $response->question_id = $question_id;
+            $response->answer      = $answer;
+            $response->save();
+        }
+        return view('assessment.result',compact('score','severity'));
+    }
+
+    // RealtionShip Health Test 
+
+     public function showRealtionshipHealth()
+    {
+        $questions=Question::where("assessment_id",10)->get();
+
+        return view ('assessment.RealtionshipHealth', compact('questions'));
+    }
+
+    public function submitRealtionshipHealth( Request $request)
+    {
+        $answers=$request->answers;
+        if(!$answers){
+            return back()->withErrors(['answers'=>'Please answer all questions']);
+
+        }
+        $score=array_sum($answers);
+
+         if ($score <= 7) {
+            $severity = 'Minimal';
+        } elseif ($score <= 14) {
+            $severity = 'Mild';
+        } elseif ($score <= 22) {
+            $severity = 'Moderate';
+        } else {
+            $severity = 'Severe';
+        }
+
+        $result                = new Result();
+        $result->user_id       =auth()->id();
+        $result->assessment_id = 10; 
+        $result->score         = $score;
+        $result->severity      = $severity;
+        $result->save();
+
+    // to save every questions response in response table
+
+        foreach ($answers as $question_id => $answer) {
+            $response              = new Response();
+            $response->result_id   = $result->id;
+            $response->question_id = $question_id;
+            $response->answer      = $answer;
+            $response->save();
+        }
+        return view('assessment.result',compact('score','severity'));
+    }
+
+
+
+
+
+
 
 
 

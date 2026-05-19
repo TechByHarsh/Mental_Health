@@ -1,396 +1,154 @@
 @extends('layouts.app')
 
+@section('no_nav', true)
+@section('no_footer', true)
+
+@section('head')
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            light: '#a8c5ab',
+                            DEFAULT: '#7a9e7e',
+                            dark: '#4a7550',
+                            deep: '#2d4532',
+                        },
+                        olive: {
+                            light: '#5a7a5e',
+                            DEFAULT: '#3d5c3f',
+                            dark: '#243a26',
+                        },
+                        cream: {
+                            light: '#f9f8f6',
+                            DEFAULT: '#f0ede8',
+                            dark: '#e5e1d8',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* ── Premium Styling & Keyframes ── */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+            50% { transform: translateY(-20px) scale(1.02) rotate(2deg); }
+        }
+        @keyframes floatMedium {
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+            50% { transform: translateY(15px) scale(1.03) rotate(-2deg); }
+        }
+        @keyframes floatFast {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+        }
+
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        .animate-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .animate-float-slow { animation: floatSlow 16s ease-in-out infinite; }
+        .animate-float-medium { animation: floatMedium 18s ease-in-out infinite; }
+        .animate-float-fast { animation: floatFast 13s ease-in-out infinite; }
+
+        /* Calming Transparent Green-Glass Gradient */
+        .glass-premium {
+            background: linear-gradient(135deg, rgba(30, 48, 35, 0.72) 0%, rgba(18, 28, 20, 0.82) 100%);
+            backdrop-filter: blur(24px) saturate(130%);
+            -webkit-backdrop-filter: blur(24px) saturate(130%);
+            border: 1px solid rgba(168, 197, 171, 0.22);
+            box-shadow: 
+                0 24px 50px rgba(10, 20, 12, 0.35),
+                inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+        }
+        .glass-premium:hover {
+            border-color: rgba(168, 197, 171, 0.38);
+            box-shadow: 
+                0 28px 60px rgba(10, 20, 12, 0.45);
+        }
+
+        /* Highly Legible Earthy Severity Badges */
+        .sev-minimal  { background: rgba(168, 197, 171, 0.15); border: 1px solid rgba(168, 197, 171, 0.4); color: #a8c5ab; }
+        .sev-mild     { background: rgba(122, 158, 126, 0.15); border: 1px solid rgba(122, 158, 126, 0.4); color: #b4ccb7; }
+        .sev-moderate { background: rgba(212, 178, 140, 0.15); border: 1px solid rgba(212, 178, 140, 0.4); color: #d4b28c; }
+        .sev-severe   { background: rgba(197, 142, 147, 0.15); border: 1px solid rgba(197, 142, 147, 0.4); color: #c58e93; }
+
+        /* Highly Legible Earthy Pips */
+        .inactive-pip {
+            background: rgba(15, 25, 17, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.35);
+        }
+        .active-minimal {
+            background: rgba(168, 197, 171, 0.18);
+            border: 1px solid #a8c5ab;
+            color: #a8c5ab;
+            box-shadow: 0 0 12px rgba(168, 197, 171, 0.15);
+            font-weight: 600;
+        }
+        .active-mild {
+            background: rgba(122, 158, 126, 0.18);
+            border: 1px solid #7a9e7e;
+            color: #b4ccb7;
+            box-shadow: 0 0 12px rgba(122, 158, 126, 0.15);
+            font-weight: 600;
+        }
+        .active-moderate {
+            background: rgba(212, 178, 140, 0.18);
+            border: 1px solid #d4b28c;
+            color: #e5d1b8;
+            box-shadow: 0 0 12px rgba(212, 178, 140, 0.15);
+            font-weight: 600;
+        }
+        .active-severe {
+            background: rgba(197, 142, 147, 0.18);
+            border: 1px solid #c58e93;
+            color: #ebd4d6;
+            box-shadow: 0 0 12px rgba(197, 142, 147, 0.15);
+            font-weight: 600;
+        }
+
+        /* Interactive list items with high legibility */
+        .sugg-item {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+        }
+        .sugg-item:hover {
+            transform: translateX(4px);
+        }
+    </style>
+@endsection
+
 @section('content')
-
-{{-- ═══════════════════════════════════════════════
-     Page-scoped styles
-════════════════════════════════════════════════ --}}
-<style>
-    /* ── Keyframes ── */
-    @keyframes fadeInUp   { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fadeInDown { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes floatA    { 0%,100% { transform:translateY(0)   rotate(0deg);   } 50% { transform:translateY(-28px) rotate(8deg);  } }
-    @keyframes floatB    { 0%,100% { transform:translateY(0)   rotate(0deg);   } 50% { transform:translateY(22px)  rotate(-6deg); } }
-    @keyframes floatC    { 0%,100% { transform:translateY(0)   scale(1);       } 50% { transform:translateY(-18px) scale(1.06);   } }
-    @keyframes pulse-glow { 0%,100% { box-shadow: 0 0 0 0 rgba(129,140,248,0); } 50% { box-shadow: 0 0 32px 8px rgba(129,140,248,0.18); } }
-    @keyframes ringDraw   { from { stroke-dashoffset: 440; } }
-
-    /* ── Wrapper ── */
-    .result-page {
-        position: relative;
-        max-width: 820px;
-        margin: 0 auto;
-        padding: 2.75rem 1.5rem 5rem;
-        overflow: hidden;
-    }
-
-    /* ── Floating background blobs ── */
-    .blob {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(90px);
-        opacity: 0.13;
-        pointer-events: none;
-        z-index: 1;
-    }
-    .blob-1 { width:440px; height:440px; background: radial-gradient(circle, #818cf8, #6366f1); top:-120px;  left:-100px;  animation: floatA 9s ease-in-out infinite; }
-    .blob-2 { width:360px; height:360px; background: radial-gradient(circle, #a78bfa, #c084fc); bottom:-80px; right:-80px;  animation: floatB 11s ease-in-out infinite; }
-    .blob-3 { width:260px; height:260px; background: radial-gradient(circle, #22d3ee, #06b6d4); top:40%;     right:5%;     animation: floatC 13s ease-in-out infinite; }
-
-    /* ── Floating geometric shapes ── */
-    .shape-layer { position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
-    .shape {
-        position: absolute;
-        border-radius: 12px;
-        opacity: 0.06;
-        border: 1.5px solid rgba(255,255,255,0.5);
-    }
-    .shape-1 { width:60px; height:60px;  top:12%;  left:8%;   transform:rotate(25deg);  animation: floatA 8s ease-in-out infinite; }
-    .shape-2 { width:40px; height:40px;  top:25%;  right:7%;  transform:rotate(-15deg); animation: floatB 10s ease-in-out infinite; border-radius:50%; }
-    .shape-3 { width:80px; height:80px;  bottom:30%; left:5%;  transform:rotate(45deg);  animation: floatC 12s ease-in-out infinite; }
-    .shape-4 { width:30px; height:30px;  bottom:20%; right:10%;transform:rotate(10deg);  animation: floatA 7s ease-in-out infinite; border-radius:50%; }
-
-    /* ── Page title ── */
-    .result-header {
-        text-align: center;
-        margin-bottom: 2.5rem;
-        animation: fadeInDown 0.6s ease both;
-        position: relative;
-        z-index: 10;
-    }
-    .result-header .page-label {
-        display: inline-block;
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(129,140,248,0.85);
-        background: rgba(129,140,248,0.1);
-        border: 1px solid rgba(129,140,248,0.25);
-        border-radius: 999px;
-        padding: 0.3rem 0.9rem;
-        margin-bottom: 0.85rem;
-    }
-    .result-header h1 {
-        font-size: clamp(1.75rem, 4vw, 2.4rem);
-        font-weight: 300;
-        letter-spacing: 0.02em;
-        color: #f1f5f9;
-        margin-bottom: 0.4rem;
-    }
-    .result-header h1 span {
-        background: linear-gradient(135deg, #818cf8, #c084fc);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 700;
-    }
-    .result-header .subtitle {
-        font-size: 0.9rem;
-        color: rgba(255,255,255,0.42);
-    }
-
-    /* ── Main score card ── */
-    .score-card {
-        background: rgba(255,255,255,0.05);
-        backdrop-filter: blur(28px);
-        -webkit-backdrop-filter: blur(28px);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 1.75rem;
-        padding: 2.5rem 2rem;
-        margin-bottom: 1.75rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-        animation: fadeInUp 0.65s ease 0.05s both;
-        position: relative;
-        z-index: 10;
-        overflow: hidden;
-    }
-    .score-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(129,140,248,0.06), rgba(192,132,252,0.04), transparent);
-        border-radius: inherit;
-        pointer-events: none;
-    }
-
-    /* ── Progress ring ── */
-    .ring-wrap {
-        position: relative;
-        width: 172px;
-        height: 172px;
-        flex-shrink: 0;
-    }
-    .ring-svg { transform: rotate(-90deg); display:block; }
-    .ring-bg   { fill:none; stroke:rgba(255,255,255,0.07); stroke-width:11; }
-    .ring-track {
-        fill: none;
-        stroke-width: 11;
-        stroke-linecap: round;
-        stroke-dasharray: 440;
-        stroke-dashoffset: 440;
-        transition: stroke-dashoffset 1.4s cubic-bezier(0.34,1.04,0.64,1);
-        animation: ringDraw 0.01s linear;
-    }
-    .ring-inner {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2px;
-    }
-    .ring-score-num {
-        font-size: 2.6rem;
-        font-weight: 800;
-        line-height: 1;
-        letter-spacing: -0.02em;
-    }
-    .ring-score-denom {
-        font-size: 0.72rem;
-        color: rgba(255,255,255,0.35);
-        letter-spacing: 0.04em;
-    }
-
-    /* ── Score info block (beside ring on desktop) ── */
-    .score-info {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
-        flex: 1;
-    }
-    @media (min-width: 640px) {
-        .score-card { flex-direction: row; padding: 2.5rem 2.5rem; gap: 2.5rem; }
-        .score-info  { text-align: left; align-items: flex-start; }
-    }
-
-    /* ── Severity badge ── */
-    .sev-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        padding: 0.45rem 1.2rem;
-        border-radius: 999px;
-        font-weight: 700;
-        font-size: 0.95rem;
-        letter-spacing: 0.04em;
-        animation: pulse-glow 3.5s ease-in-out infinite;
-    }
-    .sev-minimal  { background:rgba(34,197,94,0.14);  border:1px solid rgba(34,197,94,0.38);  color:#86efac; }
-    .sev-mild     { background:rgba(234,179,8,0.14);  border:1px solid rgba(234,179,8,0.38);  color:#fde047; }
-    .sev-moderate { background:rgba(249,115,22,0.14); border:1px solid rgba(249,115,22,0.38); color:#fdba74; }
-    .sev-severe   { background:rgba(239,68,68,0.14);  border:1px solid rgba(239,68,68,0.38);  color:#fca5a5; }
-
-    .sev-label {
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.32);
-    }
-    .sev-message {
-        font-size: 1.05rem;
-        color: rgba(255,255,255,0.75);
-        line-height: 1.6;
-        max-width: 380px;
-    }
-    .sev-message strong { color: #e2e8f0; font-weight: 600; }
-
-    /* ── PHQ-9 scale reference ── */
-    .scale-strip {
-        display: flex;
-        gap: 0.35rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .scale-pip {
-        padding: 0.25rem 0.65rem;
-        border-radius: 0.45rem;
-        font-size: 0.7rem;
-        font-weight: 600;
-        opacity: 0.55;
-        transition: opacity 0.2s;
-    }
-    .scale-pip.active { opacity: 1; box-shadow: 0 0 12px rgba(255,255,255,0.1); }
-    .pip-minimal  { background:rgba(34,197,94,0.18);  color:#86efac; border:1px solid rgba(34,197,94,0.3); }
-    .pip-mild     { background:rgba(234,179,8,0.18);  color:#fde047; border:1px solid rgba(234,179,8,0.3); }
-    .pip-moderate { background:rgba(249,115,22,0.18); color:#fdba74; border:1px solid rgba(249,115,22,0.3); }
-    .pip-severe   { background:rgba(239,68,68,0.18);  color:#fca5a5; border:1px solid rgba(239,68,68,0.3); }
-
-    /* ── Suggestions card ── */
-    .suggestions-card {
-        background: rgba(255,255,255,0.045);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border: 1px solid rgba(255,255,255,0.09);
-        border-radius: 1.5rem;
-        padding: 2rem 2.25rem;
-        margin-bottom: 1.75rem;
-        animation: fadeInUp 0.65s ease 0.18s both;
-        position: relative;
-        z-index: 10;
-    }
-    .sugg-header {
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
-        margin-bottom: 1.5rem;
-    }
-    .sugg-icon-wrap {
-        width: 46px;
-        height: 46px;
-        border-radius: 0.85rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-        background: rgba(129,140,248,0.12);
-        border: 1px solid rgba(129,140,248,0.22);
-        flex-shrink: 0;
-    }
-    .sugg-header-text .sugg-cap {
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.32);
-    }
-    .sugg-header-text .sugg-headline {
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: #e2e8f0;
-    }
-    .sugg-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.9rem;
-    }
-    .sugg-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-        font-size: 0.9rem;
-        color: rgba(255,255,255,0.68);
-        line-height: 1.6;
-    }
-    .sugg-num {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: rgba(129,140,248,0.15);
-        border: 1px solid rgba(129,140,248,0.35);
-        color: #a5b4fc;
-        font-size: 0.65rem;
-        font-weight: 800;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        margin-top: 1px;
-    }
-
-    /* ── Divider ── */
-    .divider {
-        border: none;
-        border-top: 1px solid rgba(255,255,255,0.07);
-        margin: 1.5rem 0 1.75rem;
-    }
-
-    /* ── Action buttons ── */
-    .action-row {
-        display: flex;
-        gap: 0.85rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        animation: fadeInUp 0.65s ease 0.3s both;
-        position: relative;
-        z-index: 10;
-    }
-    .btn-primary {
-        padding: 0.875rem 2rem;
-        background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
-        color: #fff;
-        border: none;
-        border-radius: 0.9rem;
-        font-weight: 600;
-        font-size: 0.9rem;
-        cursor: pointer;
-        text-decoration: none;
-        transition: filter 0.2s, transform 0.2s, box-shadow 0.2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        font-family: inherit;
-    }
-    .btn-primary:hover {
-        filter: brightness(1.14);
-        transform: translateY(-2px);
-        box-shadow: 0 12px 30px rgba(129,140,248,0.35);
-        color: #fff;
-    }
-    .btn-secondary {
-        padding: 0.875rem 1.75rem;
-        background: rgba(255,255,255,0.06);
-        color: rgba(255,255,255,0.72);
-        border: 1px solid rgba(255,255,255,0.12);
-        border-radius: 0.9rem;
-        font-weight: 600;
-        font-size: 0.9rem;
-        cursor: pointer;
-        text-decoration: none;
-        transition: all 0.2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-    }
-    .btn-secondary:hover {
-        background: rgba(255,255,255,0.11);
-        border-color: rgba(255,255,255,0.22);
-        color: #fff;
-        transform: translateY(-1px);
-    }
-
-    /* ── Responsive tweaks ── */
-    @media (max-width: 480px) {
-        .action-row .btn-primary,
-        .action-row .btn-secondary { width: 100%; justify-content: center; }
-        .suggestions-card { padding: 1.5rem 1.25rem; }
-        .score-card { padding: 1.75rem 1.25rem; }
-    }
-</style>
-
-{{-- ════════════════════════════════════════
-     Background decorations
-════════════════════════════════════════ --}}
-<div class="blob blob-1" aria-hidden="true"></div>
-<div class="blob blob-2" aria-hidden="true"></div>
-<div class="blob blob-3" aria-hidden="true"></div>
-<div class="shape-layer" aria-hidden="true">
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
-    <div class="shape shape-3"></div>
-    <div class="shape shape-4"></div>
-</div>
 
 {{-- ════════════════════════════════════════
      PHP: derive display variables
+     (Maintained exactly as original, with soft sage-green display mapping)
 ════════════════════════════════════════ --}}
 @php
     // Normalise severity to lowercase for CSS class mapping
     $sevLower = strtolower($severity);  // minimal | mild | moderate | severe
 
-    // Ring color per severity
+    // Ring color per severity (Calming, natural sage/earthy tones)
     $ringColor = match($severity) {
-        'Minimal'  => '#22c55e',
-        'Mild'     => '#eab308',
-        'Moderate' => '#f97316',
-        default    => '#ef4444',   // Severe
+        'Minimal'  => '#a8c5ab', // Soft Sage-Light
+        'Mild'     => '#7a9e7e', // Balanced Sage
+        'Moderate' => '#d4b28c', // Soft Warm Sand / Ochre
+        default    => '#c58e93', // Terracotta / Muted Rose (Severe)
     };
 
     // Ring offset: circumference = 2π × 70 ≈ 439.8 ≈ 440
@@ -455,104 +213,170 @@
 @endphp
 
 {{-- ════════════════════════════════════════
-     Main content
+     Main Layout Wrapper
 ════════════════════════════════════════ --}}
-<main class="result-page" id="result-main">
+<div class="relative min-h-screen w-full overflow-hidden text-cream font-sans bg-cover bg-center bg-no-repeat bg-fixed flex flex-col"
+     style="background-image: url('{{ asset('images/dashboard-bg.png') }}');">
+    
+    <!-- Warm Earthy Forest Overlays for Calming Aesthetic & High Contrast -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#1b2b1e]/90 via-[#101a12]/94 to-[#070d09]/97 pointer-events-none z-0"></div>
+    <div class="absolute inset-0 backdrop-blur-[3px] pointer-events-none z-0"></div>
 
-    {{-- ── Page heading ── --}}
-    <header class="result-header">
-        <span class="page-label">PHQ-9 Assessment</span>
-        <h1>Your <span>Assessment Result</span></h1>
-        <p class="subtitle">Your current emotional wellness snapshot</p>
-    </header>
+    <!-- Floating Ethereal Background Blobs (Soft Calm Green & Sage Lights) -->
+    <div class="absolute top-[-5%] left-[-10%] w-[55vw] h-[55vw] rounded-full bg-gradient-to-tr from-sage-deep/15 via-sage/10 to-transparent filter blur-[120px] mix-blend-screen animate-float-slow pointer-events-none z-0"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[48vw] h-[48vw] rounded-full bg-gradient-to-bl from-olive/15 via-sage-light/10 to-transparent filter blur-[120px] mix-blend-screen animate-float-medium pointer-events-none z-0"></div>
+    <div class="absolute top-[35%] right-[5%] w-[38vw] h-[38vw] rounded-full bg-gradient-to-l from-olive-light/10 via-sage-deep/8 to-transparent filter blur-[100px] mix-blend-screen animate-float-fast pointer-events-none z-0"></div>
 
-    {{-- ── Score card ── --}}
-    <section class="score-card" id="score-card" aria-label="PHQ-9 Score">
-
-        {{-- Animated progress ring --}}
-        <div class="ring-wrap" role="img" aria-label="Score: {{ $score }} out of 27">
-            <svg class="ring-svg" width="172" height="172" viewBox="0 0 172 172">
-                <circle class="ring-bg"    cx="86" cy="86" r="70"/>
-                <circle class="ring-track" cx="86" cy="86" r="70"
-                        id="scoreRing"
-                        stroke="{{ $ringColor }}"
-                        style="stroke-dashoffset: {{ $offset }};"/>
-            </svg>
-            <div class="ring-inner">
-                <span class="ring-score-num" style="color: {{ $ringColor }};">{{ $score }}</span>
-                <span class="ring-score-denom">out of 27</span>
-            </div>
-        </div>
-
-        {{-- Severity details --}}
-        <div class="score-info">
-
-            <span class="sev-label">Severity Level</span>
-
-            <div class="sev-badge sev-{{ $sevLower }}" id="severity-badge" aria-label="Severity: {{ $severity }}">
-                {{ $sevIcon }} {{ $severity }}
-            </div>
-
-            <p class="sev-message">{!! $sevMessage !!}</p>
-
-            {{-- PHQ-9 scale pips --}}
-            <div class="scale-strip" role="list" aria-label="PHQ-9 severity scale">
-                <span class="scale-pip pip-minimal  {{ $severity === 'Minimal'  ? 'active' : '' }}" role="listitem" title="0–4">Minimal (0–4)</span>
-                <span class="scale-pip pip-mild     {{ $severity === 'Mild'     ? 'active' : '' }}" role="listitem" title="5–9">Mild (5–9)</span>
-                <span class="scale-pip pip-moderate {{ $severity === 'Moderate' ? 'active' : '' }}" role="listitem" title="10–14">Moderate (10–14)</span>
-                <span class="scale-pip pip-severe   {{ $severity === 'Severe'   ? 'active' : '' }}" role="listitem" title="15–27">Severe (15–27)</span>
-            </div>
-
-        </div>
-    </section>
-
-    {{-- ── Suggestions card ── --}}
-    <section class="suggestions-card" id="suggestions-card" aria-label="Personalised Suggestions">
-        <div class="sugg-header">
-            <div class="sugg-icon-wrap" aria-hidden="true">{{ $suggestions['icon'] }}</div>
-            <div class="sugg-header-text">
-                <div class="sugg-cap">Personalised Suggestions</div>
-                <div class="sugg-headline">{{ $suggestions['headline'] }}</div>
-            </div>
-        </div>
-
-        <ul class="sugg-list" role="list">
-            @foreach($suggestions['tips'] as $i => $tip)
-            <li>
-                <span class="sugg-num" aria-hidden="true">{{ $i + 1 }}</span>
-                <span>{{ $tip }}</span>
-            </li>
-            @endforeach
-        </ul>
-    </section>
-
-    {{-- ── Action buttons ── --}}
-    <hr class="divider" aria-hidden="true">
-    <nav class="action-row" aria-label="Result Actions">
-        <a href="{{ url('/assessment/phq9') }}"
-           class="btn-primary"
-           id="retake-btn"
-           aria-label="Retake the PHQ-9 assessment">
-            🔄 Retake Assessment
+    {{-- ── Sleek Transparent Fixed Top Glass Navbar ── --}}
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4.5 md:px-12 backdrop-blur-md bg-[#101a12]/50 border-b border-white/5 flex items-center justify-between" role="navigation" aria-label="Main navigation">
+        <!-- Logo / Brand -->
+        <a href="/dashboard" class="flex items-center gap-2 group">
+            <span class="font-serif text-2xl font-light tracking-widest text-white group-hover:text-sage-light transition-colors duration-300">TheraWel</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#a8c5ab] shadow-[0_0_8px_#a8c5ab]"></span>
         </a>
-        <a href="{{ url('/assessment/history') }}"
-           class="btn-secondary"
-           id="history-btn"
-           aria-label="View your assessment history">
-            📊 View History
-        </a>
-        <a href="{{ url('/') }}"
-           class="btn-secondary"
-           id="home-btn"
-           aria-label="Go back to home">
-            🏠 Go to Home
-        </a>
+
+        <!-- Links (Only Home & History as per specification) -->
+        <div class="flex items-center gap-8">
+            <a href="/dashboard" class="text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white transition-colors duration-300 relative py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1.5px] after:bg-sage-light after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300">
+                Home
+            </a>
+            <a href="/assessment/history" class="text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white transition-colors duration-300 relative py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1.5px] after:bg-sage-light after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300">
+                History
+            </a>
+        </div>
     </nav>
 
-</main>
+    {{-- ── Main Container ── --}}
+    <main class="flex-1 w-full max-w-3xl mx-auto px-6 pt-32 pb-24 relative z-10" id="result-main">
+
+        {{-- ── Page heading ── --}}
+        <header class="text-center mb-10 animate-fade-in">
+            
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-light text-white tracking-tight leading-tight mb-2">
+                Your <span class="bg-gradient-to-r from-sage-light via-[#f7f5f2] to-cream bg-clip-text text-transparent font-medium drop-shadow-[0_2px_8px_rgba(168,197,171,0.15)]">Assessment Result</span>
+            </h1>
+            <p class="text-sm text-slate-300 tracking-wide font-light">Your current emotional wellness snapshot</p>
+        </header>
+
+        {{-- ── Main Score Card ── --}}
+        <section class="glass-premium rounded-[32px] p-8 md:p-10 mb-8 flex flex-col md:flex-row items-center gap-8 md:gap-10 relative overflow-hidden animate-fade-in-up" id="score-card" aria-label="PHQ-9 Score" style="animation-delay: 100ms;">
+            <!-- Subtle background glowing aura -->
+            <div class="absolute -top-16 -left-16 w-32 h-32 bg-sage/10 rounded-full filter blur-2xl pointer-events-none"></div>
+
+            {{-- Animated progress ring column --}}
+            <div class="flex-shrink-0 flex items-center justify-center relative">
+                <!-- Glowing halo under circle -->
+                <div class="absolute w-36 h-36 rounded-full filter blur-2xl opacity-15 pointer-events-none" style="background: radial-gradient(circle, {{ $ringColor }} 0%, transparent 70%);"></div>
+
+                <div class="ring-wrap relative" style="width: 172px; height: 172px;" role="img" aria-label="Score: {{ $score }} out of 27">
+                    <svg class="ring-svg -rotate-90 block" width="172" height="172" viewBox="0 0 172 172">
+                        <!-- Background track circle -->
+                        <circle class="stroke-white/[0.04]" cx="86" cy="86" r="70" fill="none" stroke-width="11" />
+                        <!-- Active animated circle with soft glow -->
+                        <circle class="stroke-linecap-round" cx="86" cy="86" r="70" fill="none" stroke-width="11"
+                                id="scoreRing"
+                                stroke="{{ $ringColor }}"
+                                style="stroke-dasharray: 440; stroke-dashoffset: 440; transition: stroke-dashoffset 1.8s cubic-bezier(0.34, 1.25, 0.64, 1); filter: drop-shadow(0 0 4px {{ $ringColor }}60);" />
+                    </svg>
+
+                    <!-- Score display in the center -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <span class="text-5xl font-extrabold tracking-tighter leading-none text-white" style="text-shadow: 0 0 15px {{ $ringColor }}50;">
+                            {{ $score }}
+                        </span>
+                        <span class="text-[10px] text-slate-300 uppercase tracking-widest font-semibold mt-1">out of 27</span>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Severity details column --}}
+            <div class="score-info flex-1 text-center md:text-left flex flex-col items-center md:items-start gap-4">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 block mb-1.5">Severity Level</span>
+                    
+                   
+                </div>
+
+                {{-- Message --}}
+                <p class="sev-message text-cream/90 text-sm md:text-base leading-relaxed max-w-md">
+                    {!! $sevMessage !!}
+                </p>
+
+               
+                <div class="scale-strip flex flex-wrap justify-center md:justify-start gap-1.5 mt-2 w-full" role="list" aria-label="PHQ-9 severity scale">
+                    <span class="scale-pip text-[10px] font-semibold px-3 py-1.5 rounded-full border transition-all duration-300 {{ $severity === 'Minimal'  ? 'active-minimal' : 'inactive-pip' }}" role="listitem" title="0–4">Minimal (0–4)</span>
+                    <span class="scale-pip text-[10px] font-semibold px-3 py-1.5 rounded-full border transition-all duration-300 {{ $severity === 'Mild'     ? 'active-mild' : 'inactive-pip' }}" role="listitem" title="5–9">Mild (5–9)</span>
+                    <span class="scale-pip text-[10px] font-semibold px-3 py-1.5 rounded-full border transition-all duration-300 {{ $severity === 'Moderate' ? 'active-moderate' : 'inactive-pip' }}" role="listitem" title="10–14">Mod (10–14)</span>
+                    <span class="scale-pip text-[10px] font-semibold px-3 py-1.5 rounded-full border transition-all duration-300 {{ $severity === 'Severe'   ? 'active-severe' : 'inactive-pip' }}" role="listitem" title="15–27">Severe (15–27)</span>
+                </div>
+            </div>
+        </section>
+
+        {{-- ── Suggestions Card ── --}}
+        <section class="glass-premium rounded-[32px] p-8 md:p-10 mb-10 relative overflow-hidden animate-fade-in-up" id="suggestions-card" aria-label="Personalised Suggestions" style="animation-delay: 220ms;">
+            <!-- Subtle background glowing aura -->
+            <div class="absolute -bottom-16 -right-16 w-32 h-32 bg-sage-light/5 rounded-full filter blur-2xl pointer-events-none"></div>
+
+            <div class="sugg-header flex items-center gap-4.5 mb-6">
+                <!-- Icon wrap -->
+                
+                <div class="sugg-header-text">
+                    <div class="text-[10px] font-bold tracking-[0.18em] text-sage-light uppercase">Personalised Suggestions</div>
+                    <div class="text-lg font-serif text-slate-100 font-medium leading-snug">{{ $suggestions['headline'] }}</div>
+                </div>
+            </div>
+
+            {{-- Recommendations list (maintaining identical structure and variables) --}}
+            <ul class="sugg-list flex flex-col gap-4" role="list">
+                @foreach($suggestions['tips'] as $i => $tip)
+                <li class="sugg-item flex items-start gap-4 group/item">
+                    <!-- Custom numbered icon with soft sage glow -->
+                    <span class="sugg-num w-6 h-6 rounded-full bg-sage-deep/80 border border-sage/40 text-sage-light text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm group-hover/item:bg-sage-dark group-hover/item:border-sage-light group-hover/item:text-white transition-all duration-300" aria-hidden="true">
+                        {{ $i + 1 }}
+                    </span>
+                    <span class="text-slate-200 text-sm md:text-base leading-relaxed group-hover/item:text-slate-50 transition-colors duration-300">{{ $tip }}</span>
+                </li>
+                @endforeach
+            </ul>
+        </section>
+
+        {{-- ── Divider ── --}}
+        <hr class="border-0 border-t border-white/5 mb-8" aria-hidden="true">
+
+        {{-- ── Action buttons ── --}}
+        <nav class="action-row flex flex-col sm:flex-row items-center justify-center gap-4.5 animate-fade-in-up" aria-label="Result Actions" style="animation-delay: 340ms;">
+            <a href="{{ url('/dashboard') }}"
+               class="w-full sm:w-auto relative overflow-hidden flex items-center justify-center gap-2 font-sans font-semibold text-xs tracking-[0.08em] uppercase text-white bg-gradient-to-r from-sage-dark to-sage hover:from-olive hover:to-sage-light px-8 py-4.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+               id="retake-btn"
+               aria-label="Retake the PHQ-9 assessment">
+                 Retake Assessment
+            </a>
+            <a href="{{ url('/assessment/history') }}"
+               class="w-full sm:w-auto flex items-center justify-center gap-2 font-sans font-semibold text-xs tracking-[0.08em] uppercase text-slate-300 bg-white/5 border border-white/10 hover:border-sage-light/40 hover:bg-white/10 px-8 py-4.5 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+               id="history-btn"
+               aria-label="View your assessment history">
+                 View History
+            </a>
+            <a href="{{ url('/dashboard') }}"
+               class="w-full sm:w-auto flex items-center justify-center gap-2 font-sans font-semibold text-xs tracking-[0.08em] uppercase text-slate-300 bg-white/5 border border-white/10 hover:border-sage-light/40 hover:bg-white/10 px-8 py-4.5 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+               id="home-btn"
+               aria-label="Go back to home">
+                 Go to Home
+            </a>
+        </nav>
+
+    </main>
+
+    {{-- Minimal Sleek Footer --}}
+    <footer class="w-full py-6 text-center text-xs text-slate-600 border-t border-white/[0.03] mt-auto relative z-10 select-none pointer-events-none">
+        &copy; {{ date('Y') }} TheraWel. All rights reserved.
+    </footer>
+
+</div>
 
 {{-- ════════════════════════════════════════
      Script: animate ring on load
+     (Preserved exactly as original)
 ════════════════════════════════════════ --}}
 <script>
 (function () {
