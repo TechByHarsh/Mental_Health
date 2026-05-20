@@ -43,6 +43,7 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' \
 EXPOSE 10000
 
 CMD php artisan config:clear && \
-    php artisan cache:clear && \
+    php artisan config:cache && \
     php artisan migrate --force && \
+    php artisan db:seed --force && \
     apache2-foreground

@@ -327,6 +327,11 @@ function renderQuestionInSlide(slideId, idx) {
     var slide = document.getElementById(slideId);
     var q = SOCIAL_QUESTIONS[idx];
     var total = SOCIAL_QUESTIONS.length;
+
+    if (!q) {
+        console.error('Question missing at index:', idx);
+        return;
+    }
     
     // Update labels and progress bar
     document.getElementById('gadStepLabel').textContent = 'STEP ' + (idx + 1) + ' OF ' + total;
