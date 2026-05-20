@@ -23,20 +23,26 @@ RUN composer install --no-dev --optimize-autoloader
 RUN npm install
 RUN npm run build
 
-# IMPORTANT FIX
 RUN a2enmod rewrite
 
-# IMPORTANT FIX
+# THIS IS THE IMPORTANT FIX
+COPY . /var/www/html
+
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 755 /var/www/html
+
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     /etc/apache2/sites-available/*.conf
 
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' \
-    /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+    /etc/apache2/apache2.conf \
+    /etc/apache2/conf-available/*.conf
 
 EXPOSE 10000
 
-CMD php artisan migrate --force && \
-    php artisan config:cache && \
+CMD php artisan config:clear && \
+    php artisan cache:clear && \
+    php artisan migrate --force && \
     apache2-foreground
