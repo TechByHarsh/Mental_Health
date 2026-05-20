@@ -171,45 +171,7 @@
         default    => '<strong>Significant symptoms detected.</strong> We strongly encourage reaching out to a professional.',
     };
 
-    // Suggestions per severity
-    $suggestions = match($severity) {
-        'Minimal' => [
-            'icon'     => '🌱',
-            'headline' => 'Keep up the great work!',
-            'tips'     => [
-                'Maintain a consistent sleep schedule to protect your mental balance.',
-                'Continue nurturing meaningful social connections and activities you love.',
-                'Practice brief mindfulness or gratitude journaling each morning.',
-            ],
-        ],
-        'Mild' => [
-            'icon'     => '🌤️',
-            'headline' => 'Small steps towards feeling better',
-            'tips'     => [
-                'Improve your sleep routine — aim for 7–8 hours of quality rest.',
-                'Take a short daily walk outdoors to boost mood and energy naturally.',
-                'Talk with a trusted friend or family member about what you\'re feeling.',
-            ],
-        ],
-        'Moderate' => [
-            'icon'     => '🌿',
-            'headline' => 'Time to prioritise your wellbeing',
-            'tips'     => [
-                'Schedule a check-in with your GP or a mental health practitioner soon.',
-                'Reduce stressors where possible and set gentle daily boundaries.',
-                'Explore relaxation techniques such as deep breathing or guided meditation.',
-            ],
-        ],
-        default => [   // Severe
-            'icon'     => '🤝',
-            'headline' => 'You don\'t have to face this alone',
-            'tips'     => [
-                'Reach out to a licensed counselor or therapist as soon as possible.',
-                'Lean on your support system — tell someone close to you how you feel.',
-                'Contact a mental health helpline or professional crisis service today.',
-            ],
-        ],
-    };
+    // AI Recommendations are generated and passed from the controller
 @endphp
 
 {{-- ════════════════════════════════════════
@@ -322,22 +284,14 @@
                 
                 <div class="sugg-header-text">
                     <div class="text-[10px] font-bold tracking-[0.18em] text-sage-light uppercase">Personalised Suggestions</div>
-                    <div class="text-lg font-serif text-slate-100 font-medium leading-snug">{{ $suggestions['headline'] }}</div>
+                    <div class="text-lg font-serif text-slate-100 font-medium leading-snug">AI-Generated Insights</div>
                 </div>
             </div>
 
-            {{-- Recommendations list (maintaining identical structure and variables) --}}
-            <ul class="sugg-list flex flex-col gap-4" role="list">
-                @foreach($suggestions['tips'] as $i => $tip)
-                <li class="sugg-item flex items-start gap-4 group/item">
-                    <!-- Custom numbered icon with soft sage glow -->
-                    <span class="sugg-num w-6 h-6 rounded-full bg-sage-deep/80 border border-sage/40 text-sage-light text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm group-hover/item:bg-sage-dark group-hover/item:border-sage-light group-hover/item:text-white transition-all duration-300" aria-hidden="true">
-                        {{ $i + 1 }}
-                    </span>
-                    <span class="text-slate-200 text-sm md:text-base leading-relaxed group-hover/item:text-slate-50 transition-colors duration-300">{{ $tip }}</span>
-                </li>
-                @endforeach
-            </ul>
+            {{-- Recommendations text --}}
+            <div class="text-slate-200 text-sm md:text-base leading-relaxed">
+                {!! nl2br(e($recommendations)) !!}
+            </div>
         </section>
 
         {{-- ── Divider ── --}}

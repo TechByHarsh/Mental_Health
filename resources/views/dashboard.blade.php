@@ -133,6 +133,22 @@
             transform-origin: top center;
             animation: subtle-ray-pulse 12s ease-in-out infinite;
         }
+
+        /* Custom Scrollbar for Chat & History */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body class="bg-cream font-sans min-h-screen flex flex-col overflow-x-hidden antialiased">
@@ -430,7 +446,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Depression Test
                     </h3>
-                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-white group-hover:text-white transition-colors duration-300 font-light leading-relaxed select-none">
                         Assess mood fluctuations, persistent sadness, low energy, and interest in daily activities.
                     </p>
                 </div>
@@ -458,7 +474,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Anxiety Test
                     </h3>
-                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-white group-hover:text-white transition-colors duration-300 font-light leading-relaxed select-none">
                         Measure worry, cognitive and somatic tension, nervousness, and emotional distress.
                     </p>
                 </div>
@@ -486,7 +502,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Stress Test
                     </h3>
-                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-white group-hover:text-white transition-colors duration-300 font-light leading-relaxed select-none">
                         Evaluate recent stressors, mental workload, coping efficacy, and tension indicators.
                     </p>
                 </div>
@@ -515,7 +531,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Social Anxiety Test
                     </h3>
-                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-white group-hover:text-white transition-colors duration-300 font-light leading-relaxed select-none">
                         Explore comfort levels, social phobias, and avoidance behaviors in interpersonal scenarios.
                     </p>
                 </div>
@@ -543,7 +559,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Sleep Quality Test
                     </h3>
-                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-white group-hover:text-white transition-colors duration-300 font-light leading-relaxed select-none">
                         Examine sleep cycles, latency, insomnia tendencies, and daytime sleepiness symptoms.
                     </p>
                 </div>
@@ -571,7 +587,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Burnout Test
                     </h3>
-                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-white group-hover:text-white transition-colors duration-300 font-light leading-relaxed select-none">
                         Detect professional, mental, and physical fatigue, detachment, and emotional exhaustion.
                     </p>
                 </div>
@@ -599,7 +615,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Panic Disorder Test
                     </h3>
-                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-white group-hover:text-white transition-colors duration-300 font-light leading-relaxed select-none">
                         Assess sudden rushes of hyper-fear, panic episodes, palpitations, and somatic shock responses.
                     </p>
                 </div>
@@ -628,7 +644,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Emotional Wellness
                     </h3>
-                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-white group-hover:text-white transition-colors duration-300 font-light leading-relaxed select-none">
                         Evaluate mood regulation, self-awareness, positive psychology markers, and wellness thresholds.
                     </p>
                 </div>
@@ -656,7 +672,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Self-Esteem Test
                     </h3>
-                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-white group-hover:text-whitetransition-colors duration-300 font-light leading-relaxed select-none">
                         Examine your self-worth, positive self-regard, internal confidence, and personal self-image.
                     </p>
                 </div>
@@ -684,7 +700,7 @@
                     <h3 class="font-serif text-xl font-normal text-white group-hover:text-cream-light transition-colors duration-300 mb-2.5 leading-tight">
                         Relationship Health
                     </h3>
-                    <p class="font-sans text-[12px] text-[#B7A27A] group-hover:text-olive-light/90 transition-colors duration-300 font-light leading-relaxed select-none">
+                    <p class="font-sans text-[12px] text-white group-hover:text-white transition-colors duration-300 font-light leading-relaxed select-none">
                         Analyze codependency, communication pathways, bonding, empathy, and partner trust factors.
                     </p>
                 </div>
@@ -700,6 +716,267 @@
 
         <!-- Extra ambient bottom spacing to let the design breathe elegantly -->
         <div class="h-20 w-full select-none pointer-events-none"></div>
+
+    </section>
+
+    <!-- ─── AI Wellness Assistant Section ─── -->
+    <section id="ai-wellness-assistant" class="relative w-full py-28 px-6 md:px-12 xl:px-24 overflow-hidden bg-cover bg-center bg-fixed flex flex-col items-center" 
+             style="background-image: url('{{ asset('images/dashboard-bg.png') }}');">
+        
+        <!-- Dreamy Dark Overlay & Ambient Vignette -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black/80 backdrop-blur-[1px] pointer-events-none z-0"></div>
+        
+        <!-- Ambient Glowing Particles -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+            <div class="absolute rounded-full bg-sage-light/10 blur-2xl animate-float-particle-ambient" style="top: 20%; left: 15%; width: 200px; height: 200px; --duration: 18s; animation-delay: 2s;"></div>
+            <div class="absolute rounded-full bg-cream-light/5 blur-xl animate-float-particle-ambient" style="top: 60%; right: 10%; width: 150px; height: 150px; --duration: 22s; animation-delay: 5s;"></div>
+        </div>
+
+        <!-- Section Header -->
+        <div class="relative w-full max-w-5xl text-center mb-16 z-10 flex flex-col items-center">
+            <div class="mb-4 relative z-10">
+                <span class="bg-white/[0.06] border border-white/15 px-4.5 py-1.5 rounded-full text-[10px] font-semibold tracking-[0.15em] text-sage-light uppercase shadow-[0_0_15px_rgba(168,197,171,0.2)]">
+                    Your Personal Space
+                </span>
+            </div>
+            <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl font-light text-white tracking-tight leading-tight mb-4 text-shadow-sm select-none relative z-10">
+                AI Wellness Assistant
+            </h2>
+            <p class="font-sans text-sm sm:text-base text-white/85 max-w-2xl mx-auto leading-relaxed select-none relative z-10 font-light">
+                A compassionate, intelligent companion designed to support your emotional health, track your moods, and guide your daily reflections.
+            </p>
+            <div class="flex items-center gap-4 mt-6 opacity-40 select-none relative z-10">
+                <span class="w-12 h-[1px] bg-gradient-to-r from-transparent to-white"></span>
+                <span class="text-[10px] text-white">✧</span>
+                <span class="w-12 h-[1px] bg-gradient-to-l from-transparent to-white"></span>
+            </div>
+        </div>
+
+        <div class="relative w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-8 z-10">
+            
+            <!-- Left Side: AI Chat Container (Takes up 2 columns on lg) -->
+            <div class="lg:col-span-2 glass-card rounded-[2rem] flex flex-col h-[750px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(168,197,171,0.05)] bg-black/20 backdrop-blur-2xl">
+                
+                <!-- Assistant Header -->
+                <div class="px-8 py-6 border-b border-white/10 bg-white/[0.02] flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-sage to-olive-dark flex items-center justify-center border border-white/20 shadow-[0_0_20px_rgba(122,158,126,0.3)]">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09l2.846.813-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"></path>
+                                </svg>
+                            </div>
+                            <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-400 border-2 border-black rounded-full animate-pulse"></span>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-2xl text-white tracking-wide">Wellness Companion</h3>
+                            <p class="font-sans text-xs text-sage-light/80 font-light">Your supportive wellness companion</p>
+                        </div>
+                    </div>
+                    <button class="w-10 h-10 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 flex items-center justify-center text-white/70 transition-all duration-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Chat Area -->
+                <div  id="chat-box" class="flex-1 overflow-y-auto p-6 md:p-8 space-y-6 custom-scrollbar relative">
+                    <!-- Date Separator -->
+                    <div class="flex justify-center">
+                        <span class="text-[10px] uppercase tracking-widest text-white/40 font-semibold bg-white/[0.03] px-4 py-1 rounded-full">Today</span>
+                    </div>
+
+                    <!-- AI Welcome Message -->
+                    <div class="flex items-end gap-3 animate-fade-in-up" style="animation-delay: 100ms;">
+                        <div class="w-8 h-8 rounded-full bg-sage/20 border border-sage/30 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-sage-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09l2.846.813-2.846.813a4.5 4.5 0 00-3.09 3.09z"></path>
+                            </svg>
+                        </div>
+                        <div class="max-w-[80%] bg-white/[0.06] border border-white/10 backdrop-blur-md text-white/90 px-5 py-4 rounded-2xl rounded-bl-sm shadow-sm">
+                            <p class="font-sans text-sm font-light leading-relaxed">Hello {{ Auth::user()->name }}. I'm here to listen and support you. How are you feeling today?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Area & Quick Actions -->
+                <div class="p-4 md:p-6 bg-white/[0.02] border-t border-white/10">
+                    
+                    <!-- Mood Quick Actions -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button onclick="document.getElementById('ai-input').value='I feel stressed'" class="px-4 py-1.5 rounded-full bg-white/[0.05] hover:bg-sage/20 border border-white/10 hover:border-sage/40 text-xs text-white/70 hover:text-white transition-all duration-300 font-light">
+                            I feel stressed
+                        </button>
+                        <button onclick="document.getElementById('ai-input').value='I feel anxious'" class="px-4 py-1.5 rounded-full bg-white/[0.05] hover:bg-sage/20 border border-white/10 hover:border-sage/40 text-xs text-white/70 hover:text-white transition-all duration-300 font-light">
+                            I feel anxious
+                        </button>
+                        <button onclick="document.getElementById('ai-input').value='I feel lonely'" class="px-4 py-1.5 rounded-full bg-white/[0.05] hover:bg-sage/20 border border-white/10 hover:border-sage/40 text-xs text-white/70 hover:text-white transition-all duration-300 font-light">
+                            I feel lonely
+                        </button>
+                        <button onclick="document.getElementById('ai-input').value='I can\'t focus'" class="px-4 py-1.5 rounded-full bg-white/[0.05] hover:bg-sage/20 border border-white/10 hover:border-sage/40 text-xs text-white/70 hover:text-white transition-all duration-300 font-light">
+                            I can't focus
+                        </button>
+                        <button onclick="document.getElementById('ai-input').value='I feel overwhelmed'" class="px-4 py-1.5 rounded-full bg-white/[0.05] hover:bg-sage/20 border border-white/10 hover:border-sage/40 text-xs text-white/70 hover:text-white transition-all duration-300 font-light">
+                            I feel overwhelmed
+                        </button>
+                    </div>
+
+                    <!-- Input Field -->
+                    <div class="relative flex items-center">
+                        <input type="text" id="ai-input" placeholder="Talk with your wellness assistant..." 
+                               class="w-full bg-black/40 border border-white/15 focus:border-sage-light/50 text-white placeholder-white/30 text-sm rounded-full pl-6 pr-14 py-4 outline-none transition-all duration-300 shadow-[inset_0_2px_10px_rgba(0,0,0,0.2)] focus:shadow-[0_0_15px_rgba(168,197,171,0.1)]">
+                        <button  onclick="sendMessage()" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-sage hover:bg-sage-light flex items-center justify-center text-white transition-all duration-300 shadow-[0_4px_10px_rgba(122,158,126,0.3)] hover:scale-105 active:scale-95">
+                            <svg class="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12L3.269 3.125A59.769 59.769 0 0121.485 12 59.768 59.768 0 013.27 20.875L5.999 12zm0 0h7.5"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Tools & Tracking (1 column on lg) -->
+            <div class="flex flex-col gap-6">
+                
+                <!-- Mood Tracking Card -->
+                <div class="glass-card rounded-[2rem] p-6 border border-white/10 bg-black/20 backdrop-blur-2xl h-fit">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-9 h-9 rounded-xl bg-sage/20 flex items-center justify-center text-sage-light">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif text-xl text-white">Mood Tracking</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-sans font-light tracking-wide text-white/60 mb-2 uppercase">How are you feeling?</label>
+                            <div class="relative">
+                                <select class="w-full appearance-none bg-black/40 border border-white/10 text-white/90 text-sm rounded-xl px-4 py-3 outline-none focus:border-sage/50 transition-colors cursor-pointer">
+                                    <option value="" disabled selected>Select mood...</option>
+                                    <option value="happy">Happy</option>
+                                    <option value="calm">Calm</option>
+                                    <option value="stressed">Stressed</option>
+                                    <option value="sad">Sad</option>
+                                    <option value="angry">Angry</option>
+                                    <option value="anxious">Anxious</option>
+                                </select>
+                                <svg class="w-4 h-4 text-white/50 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-sans font-light tracking-wide text-white/60 mb-2 uppercase">Notes (Optional)</label>
+                            <textarea rows="2" placeholder="What's on your mind?" class="w-full bg-black/40 border border-white/10 focus:border-sage-light/50 text-white placeholder-white/30 text-sm rounded-xl px-4 py-3 outline-none transition-all resize-none custom-scrollbar"></textarea>
+                        </div>
+
+                        <button class="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-medium rounded-xl transition-all duration-300 hover:border-sage/30 flex items-center justify-center gap-2">
+                            Save Mood
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mood History Card -->
+                <div class="glass-card rounded-[2rem] p-6 border border-white/10 bg-black/20 backdrop-blur-2xl flex-1 flex flex-col min-h-[250px]">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-sage/10 flex items-center justify-center text-sage-light border border-white/5">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-serif text-xl text-white">Recent History</h3>
+                        </div>
+                        <button class="text-[10px] uppercase tracking-widest text-white/40 hover:text-white/70 font-semibold transition-colors">View All</button>
+                    </div>
+                    
+                    <div class="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-4">
+                        <!-- History Item -->
+                        <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.05] hover:bg-white/[0.06] transition-colors group">
+                            <div class="flex justify-between items-start mb-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-amber-400/80"></span>
+                                    <span class="text-sm text-white/90 font-medium">Anxious</span>
+                                </div>
+                                <span class="text-[10px] text-white/40">Yesterday, 8:30 PM</span>
+                            </div>
+                            <p class="text-xs text-white/60 font-light pl-4 line-clamp-2">Nervous about the upcoming project deadline at work. Couldn't sleep well.</p>
+                        </div>
+                        
+                        <!-- History Item -->
+                        <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.05] hover:bg-white/[0.06] transition-colors group">
+                            <div class="flex justify-between items-start mb-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400/80"></span>
+                                    <span class="text-sm text-white/90 font-medium">Calm</span>
+                                </div>
+                                <span class="text-[10px] text-white/40">Mon, 10:15 AM</span>
+                            </div>
+                            <p class="text-xs text-white/60 font-light pl-4 line-clamp-2">Morning meditation really helped set a good tone for the day.</p>
+                        </div>
+
+                        <!-- History Item -->
+                        <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.05] hover:bg-white/[0.06] transition-colors group">
+                            <div class="flex justify-between items-start mb-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-rose-400/80"></span>
+                                    <span class="text-sm text-white/90 font-medium">Stressed</span>
+                                </div>
+                                <span class="text-[10px] text-white/40">Sun, 4:45 PM</span>
+                            </div>
+                            <p class="text-xs text-white/60 font-light pl-4 line-clamp-2">Family gathering was a bit overwhelming. Need some quiet time.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Wellness Feature Cards (3 small premium cards below) -->
+        <div class="relative w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 z-10">
+            <!-- Card 1 -->
+            <div class="glass-card p-5 rounded-3xl flex items-center gap-4 hover:bg-white/[0.08]">
+                <div class="w-12 h-12 rounded-2xl bg-white/[0.08] border border-white/10 flex items-center justify-center text-sage-light">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h4 class="font-serif text-lg text-white mb-0.5">Daily Reflection</h4>
+                    <p class="font-sans text-xs text-white/60 font-light">Guided journaling prompts</p>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="glass-card p-5 rounded-3xl flex items-center gap-4 hover:bg-white/[0.08]">
+                <div class="w-12 h-12 rounded-2xl bg-white/[0.08] border border-white/10 flex items-center justify-center text-sage-light">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h4 class="font-serif text-lg text-white mb-0.5">Mood Analytics</h4>
+                    <p class="font-sans text-xs text-white/60 font-light">Understand your patterns</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-card p-5 rounded-3xl flex items-center gap-4 hover:bg-white/[0.08]">
+                <div class="w-12 h-12 rounded-2xl bg-white/[0.08] border border-white/10 flex items-center justify-center text-sage-light">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 9.563C9 9.252 9.252 9 9.563 9h4.874c.311 0 .563.252.563.563v4.874c0 .311-.252.563-.563.563H9.564A.562.562 0 019 14.437V9.564z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h4 class="font-serif text-lg text-white mb-0.5">Wellness Suggestions</h4>
+                    <p class="font-sans text-xs text-white/60 font-light">Personalized care activities</p>
+                </div>
+            </div>
+        </div>
 
     </section>
 
@@ -997,6 +1274,126 @@
             }
         });
     </script>
+
+    <!-- Ai connection from ui to backend -->
+
+    <script>
+
+async function sendMessage() {
+
+    let input = document.getElementById('ai-input');
+
+    let message = input.value;
+
+    if(message.trim() === '') return;
+
+    let chatBox = document.getElementById('chat-box');
+
+    // USER MESSAGE
+
+
+    
+
+    chatBox.innerHTML += `
+        <div class="flex items-end gap-3 justify-end mt-6">
+
+            <div class="max-w-[80%] bg-olive-dark/60 border border-olive-light/30 backdrop-blur-md text-cream-light px-5 py-4 rounded-2xl rounded-br-sm shadow-sm">
+                <p class="font-sans text-sm font-light leading-relaxed">
+                    ${message}
+                </p>
+            </div>
+
+        </div>
+    `;
+
+    input.value = '';
+
+    // TYPING MESSAGE
+
+    chatBox.innerHTML += `
+        <div id="typing" class="flex items-end gap-3 mt-6">
+
+            <div class="w-8 h-8 rounded-full bg-sage/20 border border-sage/30 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-sage-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09l2.846.813-2.846.813a4.5 4.5 0 00-3.09 3.09z"></path>
+                </svg>
+            </div>
+
+            <div class="bg-white/[0.06] border border-white/10 backdrop-blur-md text-white/90 px-5 py-4 rounded-2xl rounded-bl-sm shadow-sm">
+                Typing...
+            </div>
+
+        </div>
+    `;
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    // SEND REQUEST TO LARAVEL
+
+    let response = await fetch('/ai-chat', {
+
+        method: 'POST',
+
+        headers: {
+
+            'Content-Type': 'application/json',
+
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+
+        body: JSON.stringify({
+
+            message: message
+        })
+    });
+
+    let data = await response.json();
+
+    // REMOVE TYPING
+
+    document.getElementById('typing').remove();
+
+    // AI RESPONSE
+
+    chatBox.innerHTML += `
+        <div class="flex items-end gap-3 mt-6">
+
+            <div class="w-8 h-8 rounded-full bg-sage/20 border border-sage/30 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-sage-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09 3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09l2.846.813-2.846.813a4.5 4.5 0 00-3.09 3.09z"></path>
+                </svg>
+            </div>
+
+            <div class="max-w-[80%] bg-white/[0.06] border border-white/10 backdrop-blur-md text-white/90 px-5 py-4 rounded-2xl rounded-bl-sm shadow-sm">
+
+                <p class="font-sans text-sm font-light leading-relaxed">
+                    ${data.reply}
+                </p>
+
+            </div>
+
+        </div>
+    `;
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+      
+}
+</script>
+
+
+<script>
+
+document.getElementById('ai-input')
+.addEventListener('keypress', function(e) {
+
+    if(e.key === 'Enter') {
+
+        sendMessage();
+    }
+});
+
+</script>
 
 </body>
 </html>

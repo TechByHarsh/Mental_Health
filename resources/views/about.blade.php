@@ -909,7 +909,7 @@
                 <div class="tw-contact-items">
                     <div class="tw-contact-item">
                         <span class="tw-contact-key">Phone</span>
-                        <span class="tw-contact-val"><a href="tel:+16045552874">+1 (604) 555-2874</a></span>
+                        <span class="tw-contact-val"><a href="tel:+16045552874">8882599398</a></span>
                     </div>
                     <div class="tw-contact-item">
                         <span class="tw-contact-key">Email</span>
@@ -917,7 +917,7 @@
                     </div>
                     <div class="tw-contact-item">
                         <span class="tw-contact-key">Address</span>
-                        <span class="tw-contact-val">18 Taman Sari Road,<br>Ubud, Bali, Indonesia</span>
+                        <span class="tw-contact-val">New Lane,<br>Salt Lake, Kolkata, India</span>
                     </div>
                 </div>
             </div>

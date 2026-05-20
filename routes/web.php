@@ -5,6 +5,7 @@ use App\Http\Controllers\AssessmentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AIChatController;
 
 
 Route::middleware('guest','nocache')->group(function () 
@@ -117,19 +118,24 @@ Route::post('assessment/socialanxiety/submit',[AssessmentController::class,"subm
 
 Route::post('assessment/burnout/submit',[AssessmentController::class,"submitBurnOut"]);
 
-Route::post('assessment/panic/submit',[AssessmentController::class,"submitPanicDisorder"]);
+Route::post('assessment/panicdisorder/submit',[AssessmentController::class,"submitPanicDisorder"]);
 
 Route::post('assessment/emotionalwellness/submit',[AssessmentController::class,"submitEmotionalWellness"]);
 
-Route::post("assessment/selfesteem/submit",[AssessmentController::class,"submitSelfEsteem"]);
+Route::post("assessment/self/submit",[AssessmentController::class,"submitSelfEsteem"]);
 
-Route::post("assessment/relationship/submit",[AssessmentController::class,"submitRealtionshipHealth"]);
+Route::post("assessment/relationshiphealth/submit",[AssessmentController::class,"submitRealtionshipHealth"]);
 
 
 
 Route::post('/contact-submit', [ContactController::class, 'submit'])
     ->middleware('auth')
     ->name('contact.submit');
+
+ 
+ Route::post('/ai-chat', [AIChatController::class, 'chat'])
+    ->middleware('auth')
+    ->name('ai.chat');
 
 
 

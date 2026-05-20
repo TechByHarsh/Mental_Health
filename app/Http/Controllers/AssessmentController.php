@@ -7,6 +7,7 @@ use App\Models\Question;
 use App\Models\Result;
 use App\Models\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class AssessmentController extends Controller
 {
@@ -33,6 +34,9 @@ class AssessmentController extends Controller
             $severity = 'Severe';
         }
 
+        // Ai recommendations
+        $recommendations = $this->generateAIRecommendations( 'PHQ-9 Depression Test', $severity, $score );
+
         // Persist result
         $result                = new Result();
         $result->user_id       = auth()->id();
@@ -50,7 +54,7 @@ class AssessmentController extends Controller
             $response->save();
         }
 
-        return view('assessment.result', compact('score', 'severity'));
+        return view('assessment.result', compact('score', 'severity', 'recommendations'));
     }
 
     public function history()
@@ -58,11 +62,51 @@ class AssessmentController extends Controller
        $results = Result::where('user_id', auth()->id())
                 ->orderBy('created_at', 'desc')
                 ->get();
-                
+
         return view('assessment.history', compact('results'));
     }
 
 
+    
+    // AI recomendations
+  private function generateAIRecommendations($assessment, $severity, $score)
+{
+    $prompt = "
+    Give exactly 3 short supportive mental wellness recommendations
+    for:
+
+    Assessment: $assessment
+    Severity: $severity
+    Score: $score
+
+    Keep response:
+    - supportive
+    - calming
+    - practical
+    - concise
+    ";
+
+    $response = Http::withHeaders([
+        'Authorization' => 'Bearer ' . env('MISTRAL_API_KEY'),
+        'Content-Type' => 'application/json',
+    ])->post('https://api.mistral.ai/v1/chat/completions', [
+
+        'model' => 'mistral-small-latest',
+
+        'messages' => [
+            [
+                'role' => 'user',
+                'content' => $prompt,
+            ]
+        ],
+
+        'temperature' => 0.7,
+    ]);
+
+    $data = $response->json();
+
+    return $data['choices'][0]['message']['content'];
+}
 
     // GAD functions
 
@@ -92,6 +136,9 @@ class AssessmentController extends Controller
             $severity = 'Severe';
         }
 
+        // Ai recomendations
+        $recommendations = $this->generateAIRecommendations( 'GAD7 Test', $severity, $score );
+
         // Persist result
         $result                = new Result();
         $result->user_id       = auth()->id();
@@ -109,7 +156,7 @@ class AssessmentController extends Controller
             $response->save();
         }
 
-        return view('assessment.result', compact('score', 'severity'));
+        return view('assessment.result', compact('score', 'severity', 'recommendations'));
 
         
     }
@@ -144,6 +191,11 @@ class AssessmentController extends Controller
             $severity = 'Severe';
         }
 
+        
+        // Ai Recommendations
+
+        $recommendations = $this->generateAIRecommendations( 'Stress Test', $severity, $score );
+
         // Persist result
         $result                = new Result();
         $result->user_id       = auth()->id();
@@ -161,7 +213,7 @@ class AssessmentController extends Controller
             $response->save();
         }
 
-        return view('assessment.result', compact('score', 'severity'));
+        return view('assessment.result', compact('score', 'severity', 'recommendations'));
     }
 
 
@@ -193,6 +245,11 @@ class AssessmentController extends Controller
             $severity = 'Severe';
         }
 
+        // Ai Recommendations
+
+        $recommendations = $this->generateAIRecommendations( 'Sleep Test', $severity, $score );
+
+
         $result                = new Result();
         $result->user_id       =auth()->id();
         $result->assessment_id = 4; 
@@ -209,7 +266,7 @@ class AssessmentController extends Controller
             $response->answer      = $answer;
             $response->save();
         }
-        return view('assessment.result',compact('score','severity'));
+        return view('assessment.result',compact('score', 'severity', 'recommendations'));
 
 
 
@@ -245,6 +302,11 @@ class AssessmentController extends Controller
             $severity = 'Severe';
         }
 
+        // Ai Recommendations
+
+        $recommendations = $this->generateAIRecommendations( 'SocialAnxiety Test', $severity, $score );
+
+
         $result                = new Result();
         $result->user_id       = auth()->id();
         $result->assessment_id = 5; 
@@ -261,7 +323,7 @@ class AssessmentController extends Controller
             $response->answer      = $answer;
             $response->save();
         }
-        return view('assessment.result',compact('score','severity'));
+        return view('assessment.result',compact('score', 'severity', 'recommendations'));
     }
 
 
@@ -294,6 +356,11 @@ class AssessmentController extends Controller
             $severity = 'Severe';
         }
 
+        // Ai Recommendations
+
+        $recommendations = $this->generateAIRecommendations( 'BurnOut Test', $severity, $score );
+
+
         $result                = new Result();
         $result->user_id       = auth()->id();
         $result->assessment_id = 6; 
@@ -310,7 +377,7 @@ class AssessmentController extends Controller
             $response->answer      = $answer;
             $response->save();
         }
-        return view('assessment.result',compact('score','severity'));
+        return view('assessment.result',compact('score', 'severity', 'recommendations'));
     }
 
 
@@ -343,6 +410,11 @@ class AssessmentController extends Controller
             $severity = 'Severe';
         }
 
+        // Ai Recommendations
+
+        $recommendations = $this->generateAIRecommendations( 'PanicDisorder Test', $severity, $score );
+
+
         $result                = new Result();
         $result->user_id       =auth()->id();
         $result->assessment_id = 7; 
@@ -359,7 +431,7 @@ class AssessmentController extends Controller
             $response->answer      = $answer;
             $response->save();
         }
-        return view('assessment.result',compact('score','severity'));
+        return view('assessment.result',compact('score', 'severity', 'recommendations'));
     }
 
     // Emotional Wellness Disorder 
@@ -391,6 +463,12 @@ class AssessmentController extends Controller
             $severity = 'Severe';
         }
 
+        // Ai Recommendations
+
+        $recommendations = $this->generateAIRecommendations( 'EmotionalWellness Test', $severity, $score );
+
+
+
         $result                = new Result();
         $result->user_id       = auth()->id();
         $result->assessment_id = 8; 
@@ -407,7 +485,7 @@ class AssessmentController extends Controller
             $response->answer      = $answer;
             $response->save();
         }
-        return view('assessment.result',compact('score','severity'));
+        return view('assessment.result',compact('score', 'severity', 'recommendations'));
     }
 
     // Self Esteem Test
@@ -440,6 +518,11 @@ class AssessmentController extends Controller
             $severity = 'Severe';
         }
 
+        // Ai Recommendations
+
+        $recommendations = $this->generateAIRecommendations( 'SelfEsteem Test', $severity, $score );
+
+
         $result                = new Result();
         $result->user_id       = auth()->id();
         $result->assessment_id = 9; 
@@ -456,7 +539,7 @@ class AssessmentController extends Controller
             $response->answer      = $answer;
             $response->save();
         }
-        return view('assessment.result',compact('score','severity'));
+        return view('assessment.result',compact('score', 'severity', 'recommendations'));
     }
 
     // RealtionShip Health Test 
@@ -487,6 +570,11 @@ class AssessmentController extends Controller
             $severity = 'Severe';
         }
 
+        // Ai Recommendations
+
+        $recommendations = $this->generateAIRecommendations( 'RelationshipHealth Test', $severity, $score );
+
+
         $result                = new Result();
         $result->user_id       =auth()->id();
         $result->assessment_id = 10; 
@@ -503,8 +591,10 @@ class AssessmentController extends Controller
             $response->answer      = $answer;
             $response->save();
         }
-        return view('assessment.result',compact('score','severity'));
+        return view('assessment.result',compact('score', 'severity', 'recommendations'));
     }
+
+
 
 
 

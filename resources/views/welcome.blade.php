@@ -108,7 +108,7 @@
         .nav-logo {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.35rem; font-weight: 400;
-            color: #fff; letter-spacing: 0.12em;
+            color:black; letter-spacing: 0.12em;
             position: absolute; left: 50%; transform: translateX(-50%);
         }
 
@@ -428,7 +428,9 @@
             </ul>
         </div>
 
-        <div class="nav-logo">therawell</div>
+            <div class="nav-logo">
+        <strong>Therawell</strong>
+    </div>
 
         <a href="/login" class="nav-cta" id="book-session-btn">Book A Session</a>
     </nav>
