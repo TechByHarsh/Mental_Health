@@ -256,14 +256,16 @@
 })();
 
 // Social Anxiety questions mapping
-var SOCIAL_QUESTIONS = @json(
+var SOCIAL_QUESTIONS = {!! json_encode(
     $questions->map(function($q) {
         return [
             'id' => $q->id,
             'text' => $q->question_text
         ];
     })->values()
-);
+) !!};
+
+console.log(SOCIAL_QUESTIONS);
 
 var SOCIAL_OPTIONS = [
     { value: 0, label: 'Never' },
