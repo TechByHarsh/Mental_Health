@@ -233,6 +233,9 @@
 
     </div>
 </div>
+<h1 style="color:white;">
+    {{ count($questions) }}
+</h1>
 
 <!-- ═══════════════════════════════════════
      SCRIPTS
