@@ -20,7 +20,7 @@ class AuthController extends Controller
         return redirect('/dashboard');
     }
        return response()
-        ->view('Auth.Register')
+        ->view('auth.register')
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
         ->header('Pragma', 'no-cache')
         ->header('Expires', '0');
@@ -59,7 +59,7 @@ class AuthController extends Controller
     }
        
     return response()
-        ->view('Auth.Login')
+        ->view('auth.login')
         ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
         ->header('Pragma', 'no-cache')
         ->header('Expires', '0');
