@@ -256,11 +256,14 @@
 })();
 
 // Social Anxiety questions mapping
-var SOCIAL_QUESTIONS = [
-    @foreach($questions as $q)
-    { id: {{ $q->id }}, text: @json($q->question_text) },
-    @endforeach
-];
+var SOCIAL_QUESTIONS = @json(
+    $questions->map(function($q) {
+        return [
+            'id' => $q->id,
+            'text' => $q->question_text
+        ];
+    })->values()
+);
 
 var SOCIAL_OPTIONS = [
     { value: 0, label: 'Never' },
