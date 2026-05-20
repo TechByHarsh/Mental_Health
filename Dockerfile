@@ -19,16 +19,24 @@ WORKDIR /var/www/html
 COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
+
 RUN npm install
 RUN npm run build
 
+# IMPORTANT FIX
 RUN a2enmod rewrite
 
-RUN chown -R www-data:www-data /var/www/html/storage
-RUN chmod -R 775 /var/www/html/storage
+# IMPORTANT FIX
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
+    /etc/apache2/sites-available/*.conf
+
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' \
+    /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 EXPOSE 10000
 
-CMD sed -i 's/80/10000/g' /etc/apache2/ports.conf && \
-    sed -i 's/:80/:10000/g' /etc/apache2/sites-enabled/000-default.conf && \
+CMD php artisan migrate --force && \
+    php artisan config:cache && \
     apache2-foreground
